@@ -22,9 +22,9 @@
 (define m1-date "TBD")
 (define m2-date "TBD")
 (define final-date "TBD")
-(define elms-url "https://umd.instructure.com/courses/1338880")
+(define elms-url "https://umd.instructure.com/courses/1338886")
 
-(define racket-version "8.7")
+(define ghc-version "9.0.2")
 
 (define staff
   (list (list "Pierce Darragh"  "pdarragh@umd.edu" "TBD")
@@ -36,6 +36,7 @@
 (define lecture-schedule "Tuesday & Thursday, 11:00am - 12:15pm")
 (define classroom "HJP 0226")
 
-(define discord "https://discord.gg/UvbxV2JS")
+(define discord "https://discord.gg/HmHsdH2b")
 
-(define gradescope "https://www.gradescope.com/courses/503944")
+(define gradescope "https://www.gradescope.com/courses/504412")
+

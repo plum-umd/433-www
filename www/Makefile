@@ -16,6 +16,8 @@ scribble:
 		$(course).scrbl
 
 
+push:
+	rsync -avzhe ssh main/ jmct@junkfood.cs.umd.edu:/fs/www/class/spring2023/cmsc433
 
 clean:
 	rm -rf $(course)
