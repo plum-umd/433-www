@@ -34,7 +34,7 @@
 
 
 (define lecture-schedule "Tuesday & Thursday, 11:00am - 12:15pm")
-(define classroom "KEY 0106")
+(define classroom "HJP 0226")
 
 (define discord "https://discord.gg/UvbxV2JS")
 

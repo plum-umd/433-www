@@ -6,9 +6,9 @@
 (require images/icons/file)
 
 (begin-for-syntax
-  (define-runtime-path notes "../../langs/"))
+  (define-runtime-path notes "./"))
 
-(define-runtime-path notes "../../langs")
+(define-runtime-path notes "./")
 
 (define-syntax (filebox-include stx)
   (syntax-case stx ()
