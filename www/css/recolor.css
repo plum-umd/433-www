@@ -1,0 +1,17 @@
+.navsettop {
+    /* background: #A8BAA8; */
+    background: hsl(117, 10%, 67%);
+}
+
+.tocset {
+    /* background-color: #C0C7A9; */
+    background-color: hsl(75, 15%, 88%);
+}
+
+a, .toclink, .toptoclink, .tocviewlink, .tocviewselflink, .tocviewtoggle, .plainlink, .techinside, .techoutside:hover, .techinside:hover {
+    color: hsl(72, 100%, 22%);
+}
+
+.boxed {
+    background: linear-gradient(to bottom left, hsl(0, 0%, 99%) 0%, hsl(75, 33%, 90%) 100%);
+}
