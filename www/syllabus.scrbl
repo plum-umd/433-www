@@ -14,8 +14,7 @@
 
 @bold{Email:} @prof-email
 
-@bold{Office Hours:} By appointment.  Send email or Discord DM to set
-up.
+@bold{Office Hours:} By appointment.  Send email.
 
 @bold{Prerequisite:} a grade of C or better in CMSC330; and permission
 of department; or CMSC graduate student.
@@ -163,17 +162,17 @@ The following list of lecture topics will vary according to the pace
 of the course:
 
 @itemlist[
-  @item{Overview of compilation}
-  @item{Operational semantics}
-  @item{Interpreters}
-  @item{Intermediate representations and bytecode}
-  @item{Code generation}
-  @item{Run-time systems}
-  @item{Garbage collection}
-  @item{Type systems, type soundness, type inference}
-  @item{Register allocation and optimization}
-  @item{Language design}
-  @item{Advanced topics in compilation}]
+  @item{Basics of Haskell}
+  @item{Higher-order representation of Datatypes}
+  @item{Typeclasses}
+  @item{Quickcheck}
+  @item{Dynamic Programming}
+  @item{Intermediate Typeclasses}
+  @item{DSLs}
+  @item{Shared-Memory Concurrency}
+  @item{Software-Transactional Memory}
+  @item{Actor Model}
+  @item{Linear Types and Ownership}]
 
 @section{Grades}
 

@@ -17,7 +17,7 @@
 
 @title[#:style accessible @courseno]{: Programming Language Technologies and Paradigms}
 
-@image[#:scale 1/2 #:style float-right]{img/wizard.png}
+@image[#:scale 1/2 #:style float-right]{img/haskell-logo.png}
 
 @emph{@string-titlecase[semester], @year}
 
@@ -37,7 +37,7 @@ a common theme as we explore various language technologies.
 	        (list prof prof-email "By appt.")
 		staff)]
 
-@bold{Communications:} Email
+@bold{Communications:} Email, @link[@discord]{Discord}
 
 @bold{Assumptions:} This course assumes you know the material in CMSC 330 and
 CMSC 216. In particular, you need to know how to program in a functional
