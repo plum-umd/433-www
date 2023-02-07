@@ -12,6 +12,7 @@
 
     devShell.x86_64-linux = pkgs.mkShell {
       buildInputs = [ pkgs.cargo
+                      pkgs.cabal-install
                       pkgs.nasm
                       pkgs.racket
                       ghcPkgs

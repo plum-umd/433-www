@@ -28,6 +28,8 @@
 
 (define staff
   (list (list "Pierce Darragh"  "pdarragh@umd.edu" "TBD")
+        (list "Benjamin Robers"  "bobert95@terpmail.umd.edu" "TBD")
+        (list "Mingwei Zhu"  "mzhu1@umd.edu" "TBD")
         ))
 
 

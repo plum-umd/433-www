@@ -248,19 +248,16 @@ reading.
 
 @section[#:tag "syllabus-quiz"]{Quizzes & surveys}
 
-There will be @bold{many} quizzes and surveys. These will be administered
-through ELMS.  Completed surveys receive full credit.  Instructors reserve the
-right to reject survey responses that are not considered thoughtful.
+There will be @bold{many} quizzes and surveys. Completed surveys receive full
+credit.  Instructors reserve the right to reject survey responses that are not
+considered thoughtful.
 
 @section[#:tag "syllabus-midterms"]{Midterms}
 
-There will be two @secref{Midterms}, which will be @bold{take-home}
-exams.  Exams will be distributed at least 48 hours before the due
-date of the midterm.
+There will be one @secref{Midterms}, which will be @bold{in person}.
 
 @itemlist[
-  @item{Midterm 1: @bold{@m1-date}}
-  @item{Midterm 2: @bold{@m2-date}}
+  @item{Midterm 1: @bold{TBD}}
 ]
 
 @section[#:tag "syllabus-project"]{Project}

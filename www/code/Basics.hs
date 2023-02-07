@@ -311,15 +311,15 @@ We'll start with a few examples just using the interactive toplevel for the
 Haskell language. Although Haskell is a compiled language, the interactive
 toplevel, "ghci" is available for experimentation. You can access this
 toplevel using any command prompt (i.e. Terminal), as long as you have GHC
-installed. The examples below also assume that you have the "stack" tool
+installed. The examples below also assume that you have the "ghci" tool
 available and that you have started the command prompt in the same directory
 that contains this source code. [Instructions for installing "stack" and
-other tools are available.](https://www.cs.umd.edu/class/spring2022/cmsc488B/resources.html)
+other tools are available.](https://www.cs.umd.edu/class/spring2023/cmsc433/software.html)
 
 First use the terminal to start `ghci` and instruct it to load the `Basics`
 module.
 
-    lemonidas@Admitted % stack ghci Basics.hs
+    lemonidas@Admitted % ghci Basics.hs
     cmsc488X> configure (lib)
     cmsc488X> initial-build-steps (lib)
     Configuring GHCi with the following packages: cmsc488X
@@ -445,9 +445,9 @@ query' = do
   return ()
 
 {-
-Note that you cannot name the *last* action in a sequence. Names are there so that
-you can use their results later. If you want to return the value instead, the last action
-should be a `return`.
+Note that you cannot name the *last* action in a sequence. Names are there so
+that you can use their results later. If you want to return the value instead,
+the last action should be a `return`.
 -}
 
 query2 :: IO String -- compare this type to `query` above.

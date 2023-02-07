@@ -26,8 +26,8 @@
         (begin (apply shell (syntax->datum #'(s ...)))
 	       #'(void)))]))
 
-@title[#:tag "Basics"]{Getting Started with Haskell}
+@title[#:tag "HigherOrder"]{Getting comfortable with first-class functions}
 
 @section{Overview}
 
-@filebox-include[fancy-hask "../code/Basics.hs"]
+@filebox-include[fancy-hask "../code/HigherOrder.hs"]

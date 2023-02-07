@@ -17,6 +17,9 @@
 (define (fancy-c s)
   (fancyverbatim "c" s))
 
+(define (fancy-hask s)
+  (fancyverbatim "haskell" s))
+
 (define (fancy-nasm s)
   (fancyverbatim "nasm" s))
 

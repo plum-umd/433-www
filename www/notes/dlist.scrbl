@@ -26,8 +26,8 @@
         (begin (apply shell (syntax->datum #'(s ...)))
 	       #'(void)))]))
 
-@title[#:tag "Basics"]{Getting Started with Haskell}
+@title[#:tag "DList"]{DLists, faster lists}
 
 @section{Overview}
 
-@filebox-include[fancy-hask "../code/Basics.hs"]
+@filebox-include[fancy-hask "../code/DList.hs"]

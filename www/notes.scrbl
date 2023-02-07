@@ -11,3 +11,5 @@ suggestions for improving the material, @bold{please},
 @local-table-of-contents[#:style 'immediate-only]
 
 @include-section{notes/basics.scrbl}
+@include-section{notes/dlist.scrbl}
+@include-section{notes/higherorder.scrbl}

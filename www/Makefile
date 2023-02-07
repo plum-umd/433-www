@@ -1,10 +1,10 @@
 course = main
 
-.PHONY : all clean scribble
+.PHONY : all clean scribble code
 
 all: clean $(course)
 
-$(course): scribble
+$(course): scribble code
 
 scribble:
 	raco scribble --htmls \
@@ -16,8 +16,13 @@ scribble:
 		--redirect-main http://docs.racket-lang.org/ \
 		$(course).scrbl
 
+code:
+	mkdir -p $(course)/code/
+	cd code ; \
+		tar -c `git ls-files *.hs` | \
+		(cd ../main/code ; tar -x)
 
-push:
+push: scribble code
 	rsync -avzhe ssh main/ jmct@junkfood.cs.umd.edu:/fs/www/class/spring2023/cmsc433
 
 clean:

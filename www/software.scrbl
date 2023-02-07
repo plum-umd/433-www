@@ -58,6 +58,15 @@ For this course we will be using GHC version 9.0.2, but any version 9.* version 
 @link["https://www.haskell.org/ghcup/guide"]{This link} explains how to install
 a specific version of GHC.
 
+The GHCUp tool will ask you some questions about whether you want additional tools (like the language server implementation, which may or may not be useful depending on whether you use VSCode). The defaults should be fine, as long as you have the following tools after installation:
+
+@itemlist[
+  #:style 'ordered
+  @item{@tt{ghc}}
+  @item{@tt{ghci}}
+  @item{@tt{cabal}}
+]
+
 @section[#:tag "Windows"]{Using Windows}
 
 It is possible to use GHC without WSL, but unless you're confident with Windows
@@ -65,12 +74,7 @@ development and powershell, I would use WSL2. If you are confident, you can
 read the @link["https://www.haskell.org/ghcup/guide"]{GHC-Up} guide for how to
 use it in Windows Powershell.
 
-For Windows users, using WSL for testing is highly recommended. Beyond 
-the first few assignments, the projects will require generating and 
-executing assembly code using the nasm package. Students in the past 
-have had trouble trying to configure this in the Windows environment, 
-so an easier workaround is simply to enable WSL and run your tests through 
-some Linux Distribution. Here is a breakdown of the steps:
+Here is a breakdown of the steps:
 
 @itemlist[
  #:style 'ordered

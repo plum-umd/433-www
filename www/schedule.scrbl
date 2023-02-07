@@ -21,13 +21,15 @@
 
                (list @wk{1/30}
 	       	     ""
-                     @elem{}
-                     @elem{}
+                     @itemlist[@item{@secref["DList"]}]
+                     @itemlist[@item{@secref["DList"]}
+                               @item{Quiz 1}]
                      )
 
                (list @wk{2/6}
 	       	     ""
-                     @elem{}
+                     @itemlist[@item{@secref["HigherOrder"]}
+                               @item{@link["https://forms.gle/17jmnscb7VZEPmP69"]{Study Group form}}]
                      @elem{})
 
                (list @wk{2/13}
