@@ -1,5 +1,33 @@
 Assignment #1 for CMSC433
 
+Introduction
+============
+
+This is the first homework assignment for CMSC 433. It provides practice with
+the basic built-in data structures of Haskell, including lists, tuples and
+maybes, as well as recursion and pattern matching. It also covers the basics of
+Haskell code style and test-driven development. If you have not read the Basics
+module you should do that first.
+
+Main.hs is a "literate" Haskell program, meaning that explanation is
+interspersed with actual Haskell code. To complete your assignment, edit
+Main.hs and submit it through Gradescope.
+
+This file starts by first declaring that we are creating a module
+called Main and are using functions defined in the modules Prelude,
+Test.HUnit, Data.List and Data.Char.
+
+The Prelude line imports all except for the functions listed (which
+you will write). The module Prelude is special in that it is always
+imported by default, so the the point of this line is not to import
+more functions, but rather to exclude a few functions. (Haskell does
+not allow functions to be redefined in the same module.)
+
+The Test.HUnit line imports all functions defined in that module. The
+line Data.List imports all functions from that module, but makes them
+available with qualified names, such as List.intersperse, etc.
+
+
 Recommended Workflow
 ====================
 
@@ -22,6 +50,8 @@ This will install the libraries as specified in `hw01.cabal` and launch the repl
 At the interactive prompt, you can check the types of various functions with `:t`,
 or edit `Main.hs` with `:e`.
 
+If at any point you want to execute the `main` function, you can use `:main`
+
 IDE-first development
 ---------------------
 
@@ -31,3 +61,17 @@ window.
 
 When you save changes to your file, you'll need to 'reload' the file in you
 repl with `:r`
+
+Compiling the executable
+------------------------
+
+Regardless of how you develop your code, you may want to actually compile
+your solution into an executable. You can do this with the `cabal` command:
+
+```{shell}
+$ cabal build
+```
+
+The above will build the executable and link all of the necessary libraries.
+
+To run the executable you can run `cabal run`.

@@ -1,39 +1,15 @@
-{-
-Name:
--}
-
-{-
-
-This is the first homework assignment for CMSC 433. It provides
-practice with the basic built-in data structures of Haskell, including
-lists, tuples and maybes, as well as recursion and pattern
-matching. It also covers the basics of Haskell code style and
-test-driven development. If you have not read the Basics module, and
-completed the associated quiz, you should do that first.
-
-This page is a "literate" Haskell program, meaning that explanation is
-interspersed with actual Haskell code. To complete your assignment, edit
-Main.hs and submit it through Gradescope.
-
-This file starts by first declaring that we are creating a module
-called Main and are using functions defined in the modules Prelude,
-Test.HUnit, Data.List and Data.Char.
-
-The Prelude line imports all except for the functions listed (which
-you will write). The module Prelude is special in that it is always
-imported by default, so the the point of this line is not to import
-more functions, but rather to exclude a few functions. (Haskell does
-not allow functions to be redefined in the same module.)
-
-The Test.HUnit line imports all functions defined in that module. The
-line Data.List imports all functions from that module, but makes them
-available with qualified names, such as List.intersperse, etc.
-
--}
-
 module Main where
 import Prelude hiding (reverse, concat, zip, (++), takeWhile, all)
 import Test.HUnit
+
+todo = error "It is your job to fill in this todo"
+
+studentName :: String
+studentName = todo
+
+testName :: Test
+testName = "testName" ~:
+   assertBool "You need to provide a `studentName`" (not (null studentName))
 
 {-
 The main "entry point" for this assignment runs the tests for each
@@ -47,24 +23,13 @@ later in the file.
 
 main :: IO ()
 main = do
+  runTestTT testName
   runTestTT testStyle
   runTestTT testLists
   runTestTT testHO
   runTestTT testFoldr
   runTestTT testTree
   return ()
-
-{-
-
-Now that we have the preliminaries out of the way, we can start the actual problems.
-
-Recall that you can load this file into ghci with the command stack
-ghci Main.hs. Or, you can build the executable first with stack build
-and then run the test cases above with the command line stack exec --
-hw01. (For each of these, make sure that you are in the hw01
-subdirectory.)
-
--}
 
 --------------------------------------------------------------------------------
 -- Problem (Good Style)
@@ -192,7 +157,7 @@ testLists = "testLists" ~: TestList
 -- >>> minumumMaybe [2,1,3]
 -- Just 1 
 minimumMaybe :: [Int] -> Maybe Int
-minimumMaybe = undefined
+minimumMaybe = todo
 
 tminimumMaybe :: Test
 tminimumMaybe =
@@ -209,7 +174,7 @@ tminimumMaybe =
 -- >>> "Hello" `startsWith` "Wello Horld!"
 -- False
 startsWith :: String -> String -> Bool
-startsWith = undefined
+startsWith = todo
 
 tstartsWith :: Test
 tstartsWith = "startsWith" ~: (assertFailure "testcase for startsWith" :: Assertion)
@@ -227,7 +192,7 @@ tstartsWith = "startsWith" ~: (assertFailure "testcase for startsWith" :: Assert
 -- False
 
 endsWith :: String -> String -> Bool
-endsWith = undefined
+endsWith = todo
 
 tendsWith :: Test
 tendsWith = "endsWith" ~: (assertFailure "testcase for endsWith" :: Assertion)
@@ -251,7 +216,7 @@ tendsWith = "endsWith" ~: (assertFailure "testcase for endsWith" :: Assertion)
 -- [[1,3],[2,4]]
 -- (WARNING: this one is tricky!)
 transpose :: [[a]] -> [[a]]
-transpose = undefined
+transpose = todo
 
 ttranspose :: Test
 ttranspose = "transpose" ~: (assertFailure "testcase for transpose" :: Assertion)
@@ -267,7 +232,7 @@ ttranspose = "transpose" ~: (assertFailure "testcase for transpose" :: Assertion
 -- 5
 
 countSub :: String -> String -> Int
-countSub = undefined
+countSub = todo
 tcountSub :: Test
 tcountSub = "countSub" ~: (assertFailure "testcase for countSub" :: Assertion)
 
@@ -299,7 +264,7 @@ testHO = TestList [ttakeWhile, tfind, tall, tmap2, tmapMaybe]
 -- []
 
 takeWhile :: (a -> Bool) -> [a] -> [a]
-takeWhile = undefined
+takeWhile = todo
 ttakeWhile :: Test
 ttakeWhile = "takeWhile" ~: (assertFailure "testcase for takeWhile" :: Assertion)
 
@@ -311,7 +276,7 @@ ttakeWhile = "takeWhile" ~: (assertFailure "testcase for takeWhile" :: Assertion
 -- Just 3
 
 find :: (a -> Bool) -> [a] -> Maybe a
-find = undefined
+find = todo
 tfind :: Test
 tfind = "find" ~: (assertFailure "testcase for find" :: Assertion)
 
@@ -322,7 +287,7 @@ tfind = "find" ~: (assertFailure "testcase for find" :: Assertion)
 -- False
 
 all  :: (a -> Bool) -> [a] -> Bool
-all = undefined
+all = todo
 tall :: Test
 tall = "all" ~: (assertFailure "testcase for all" :: Assertion)
 
@@ -340,7 +305,7 @@ tall = "all" ~: (assertFailure "testcase for all" :: Assertion)
 -- NOTE: `map2` is called `zipWith` in the Prelude
 
 map2 :: (a -> b -> c) -> [a] -> [b] -> [c]
-map2 = undefined
+map2 = todo
 
 tmap2 :: Test
 tmap2 = "map2" ~: (assertFailure "testcase for map2" :: Assertion)
@@ -353,7 +318,7 @@ tmap2 = "map2" ~: (assertFailure "testcase for map2" :: Assertion)
 --
 -- (where `root` is defined below.)
 mapMaybe :: (a -> Maybe b) -> [a] -> [b]
-mapMaybe = undefined
+mapMaybe = todo
 
 tmapMaybe :: Test
 tmapMaybe = "mapMaybe" ~: (assertFailure "testcase for mapMaybe" :: Assertion)
@@ -394,7 +359,7 @@ function. Instead, define it yourself.
 -}
 
 concat' :: [[a]] -> [a]
-concat' = undefined
+concat' = todo
 
 tconcat' :: Test
 tconcat' = "concat" ~: (assertFailure "testcase for concat" :: Assertion)
@@ -411,7 +376,7 @@ tconcat' = "concat" ~: (assertFailure "testcase for concat" :: Assertion)
 -- NOTE: use foldr for this one, but it is tricky! (Hint: the value returned by foldr can itself be a function.)
 
 startsWith' :: String -> String -> Bool
-startsWith' = undefined
+startsWith' = todo
 tstartsWith' = "tstartsWith'" ~: (assertFailure "testcase for startsWith'" :: Assertion)
 
 -- INTERLUDE: para
@@ -450,7 +415,7 @@ redefine the function above so that the test cases still pass.
 
 -}
 
-tails' = undefined
+tails' = todo
 
 ttails :: Test
 ttails = "tails" ~: TestList [
@@ -471,7 +436,7 @@ ttails = "tails" ~: TestList [
 -- NOTE: use para for this one!
 
 endsWith' :: String -> String -> Bool
-endsWith' = undefined
+endsWith' = todo
 
 tendsWith' :: Test
 tendsWith' = "endsWith'" ~: (assertFailure "testcase for endsWith'" :: Assertion)
@@ -487,7 +452,7 @@ tendsWith' = "endsWith'" ~: (assertFailure "testcase for endsWith'" :: Assertion
 -- (You may use the para and startsWith' functions in countSub'.)
 
 countSub'  :: String -> String -> Int
-countSub' = undefined
+countSub' = todo
 tcountSub' = "countSub'" ~: (assertFailure "testcase for countSub'" :: Assertion)
 
 --------------------------------------------------------------------------------
@@ -535,7 +500,7 @@ foldTree f e (Branch a n1 n2) = f a (foldTree f e n1) (foldTree f e n2)
 -- Branch 'a' Empty Empty
 
 appendTree :: Tree a -> Tree a -> Tree a
-appendTree = undefined
+appendTree = todo
 tappendTree :: Test
 tappendTree = "appendTree" ~: (assertFailure "testcase for appendTree"  :: Assertion)
 
@@ -546,7 +511,7 @@ tappendTree = "appendTree" ~: (assertFailure "testcase for appendTree"  :: Asser
 -- Branch (True,"a") Empty Empty
 
 invertTree :: Tree (a,b) -> Tree (b,a)
-invertTree = undefined
+invertTree = todo
 tinvertTree :: Test
 tinvertTree = "invertTree" ~: (assertFailure "testcase for invertTree" :: Assertion)
 
@@ -565,7 +530,7 @@ tree1 = Branch 1 (Branch 2 Empty Empty) (Branch 3 Empty Empty)
 -- Empty
 
 takeWhileTree :: (a -> Bool) -> Tree a -> Tree a
-takeWhileTree = undefined
+takeWhileTree = todo
 ttakeWhileTree :: Test
 ttakeWhileTree = "takeWhileTree" ~: (assertFailure "testcase for takeWhileTree" :: Assertion)
 
@@ -576,7 +541,7 @@ ttakeWhileTree = "takeWhileTree" ~: (assertFailure "testcase for takeWhileTree" 
 -- False
 
 allTree :: (a -> Bool) -> Tree a -> Bool
-allTree = undefined
+allTree = todo
 tallTree :: Test
 tallTree = "allTree" ~: (assertFailure "testcase for allTree" :: Assertion)
 
@@ -595,7 +560,7 @@ tallTree = "allTree" ~: (assertFailure "testcase for allTree" :: Assertion)
 -- Branch 4 Empty Empty
 
 map2Tree :: (a -> b -> c) -> Tree a -> Tree b -> Tree c
-map2Tree = undefined
+map2Tree = todo
 
 tmap2Tree :: Test
 tmap2Tree = "map2Tree" ~: (assertFailure "testcase for map2Tree" :: Assertion)
