@@ -30,7 +30,7 @@ code:
 		tar -c `git ls-files *.hs` | \
 		(cd ../main/code ; tar -x)
 
-push: scribble code
+push: scribble code hw
 	rsync -avzhe ssh main/ jmct@junkfood.cs.umd.edu:/fs/www/class/spring2023/cmsc433
 
 clean:
