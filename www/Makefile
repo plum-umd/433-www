@@ -16,6 +16,14 @@ scribble:
 		--redirect-main http://docs.racket-lang.org/ \
 		$(course).scrbl
 
+hw:
+	mkdir -p $(course)/hw/
+	cd assignments/ ; \
+	for f in `ls -d .*/hw*/`; do \
+		git archive -o $${f%/}.zip HEAD $$f; \
+		cp $${f%/}.zip ../$(course)/hw/; \
+	done
+
 code:
 	mkdir -p $(course)/code/
 	cd code ; \
