@@ -13,3 +13,6 @@ suggestions for improving the material, @bold{please},
 @include-section{notes/basics.scrbl}
 @include-section{notes/dlist.scrbl}
 @include-section{notes/higherorder.scrbl}
+@include-section{notes/datatypes.scrbl}
+@include-section{notes/folds.scrbl}
+@include-section{notes/treefolds.scrbl}

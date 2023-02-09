@@ -38,7 +38,7 @@
 (define lecture-schedule "Tuesday & Thursday, 11:00am - 12:15pm")
 (define classroom "HJP 0226")
 
-(define discord "https://discord.gg/HmHsdH2b")
+(define discord "https://discord.gg/j9Qz6T9z")
 
 (define gradescope "https://www.gradescope.com/courses/504412")
 

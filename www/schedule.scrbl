@@ -30,7 +30,10 @@
 	       	     ""
                      @itemlist[@item{@secref["HigherOrder"]}
                                @item{@link["https://forms.gle/17jmnscb7VZEPmP69"]{Study Group form}}]
-                     @elem{})
+                     @itemlist[@item{@secref["Datatypes"]}
+                               @item{@secref["Folds"]}
+                               @item{@secref["TreeFolds"]}]
+                     )
 
                (list @wk{2/13}
 	             ""
