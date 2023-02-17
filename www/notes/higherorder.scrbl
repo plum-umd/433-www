@@ -1,6 +1,6 @@
 #lang scribble/manual
 
-@(require (for-label (except-in racket compile) a86))
+@(require (for-label (except-in racket compile)))
 @(require scribble/examples
 	  redex/reduction-semantics	  
           redex/pict
