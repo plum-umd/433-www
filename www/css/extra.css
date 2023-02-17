@@ -64,5 +64,10 @@ a, .toclink, .toptoclink, .tocviewlink, .tocviewselflink, .tocviewtoggle, .plain
 }
 
 .Rfilebox {
-    margin-right: -14em;
+    margin-right: -15em;
 }
+
+.Rfiletitle {
+    margin-right: 15em;
+}
+
