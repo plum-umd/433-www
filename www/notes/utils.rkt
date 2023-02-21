@@ -2,7 +2,7 @@
 (provide (all-defined-out))
 (require (for-syntax racket/runtime-path racket/base racket/file))
 (require scribble/manual racket/runtime-path)
-(require (for-label (except-in racket compile) a86))
+(require (for-label (except-in racket compile)))
 (require images/icons/file)
 
 (begin-for-syntax
