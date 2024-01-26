@@ -8,8 +8,6 @@ CMSC 433: Programming Language Technologies and Paradigms
 
 Spring 2024
 
-[Quiz](code/quizsingle.pdf)
-
 **Lectures:**  
 Tuesday & Thursday, 3.30pm Eastern - 4.45pm Eastern  
 CSI 1115
