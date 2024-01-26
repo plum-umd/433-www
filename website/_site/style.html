@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>433 - Haskell Style Guide</title>
+        <link rel="stylesheet" href="./css/default.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="./">433</a>
+            </div>
+            <nav>
+                <a href="./">Home</a>
+                <a href="./syllabus.html">Syllabus</a>
+                <a href="./schedule.html">Schedule</a>
+                <a href="./resources.html">Resources</a>
+                <a href="./assignments.html">HW</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>Haskell Style Guide</h1>
+            <p>The syntax of the Haskell language can be really beautiful. Even if you don’t continue to write programs for GHC after the end of the semester, you may continue to use this syntax to express your ideas, because it just works. Furthermore, many people will be reading the code that you produce in this course—you, your partner, the course staff, and perhaps the whole class during a homework discussion.</p>
+<p>So make it pretty! The style guidelines below help. But the best advice is to revise, revise, revise…</p>
+<p>Some of these style guidelines can be checked automatically by the hlint tool; feel free to run it on your assignment before you submit. You can install this tool by running the following command (you might need to install “libncurses-dev” on WSL):</p>
+<pre><code>stack install hlint</code></pre>
+<p>NOTE: hlint may give you suggestions for Haskell features and functions that we may not have yet covered in class. If an hlint suggestion doesn’t make sense to you, and is not listed below, you can ignore it.</p>
+<h1 id="required-elements">Required Elements</h1>
+<h2 id="rd-every-top-level-function-must-have-an-explicit-type-declaration">RD: Every top-level function must have an explicit type declaration</h2>
+<p>For example, write</p>
+<pre><code>myfunc :: Integer -&gt; Integer -&gt; [Integer] -&gt; [Integer]
+myfunc x y z = (x+y) : z</code></pre>
+<p>instead of just:</p>
+<pre><code>myfunc x y z = (x+y) : z</code></pre>
+<p>These declarations will sometimes be fairly obvious (from the function definition itself, its name, nearby comments, or whatever), but getting into the habit of writing them all the time is good discipline. And, good type signatures lead to better error messages.</p>
+<h2 id="rt-every-significant-piece-of-functionality-must-have-testing-code">RT: Every significant piece of functionality must have testing code</h2>
+<p>In particular, every solution to a homework exercise must include a “test driver” that shows how it behaves on several examples. These test cases will often be given to you. If that is the case, you do not need to add more.</p>
+<h2 id="rc-submitted-code-must-compile-cleanly">RC: Submitted code must compile (cleanly)</h2>
+<p>Any code you submit must be accepted by GHC without errors or warnings. Never submit anything that you have changed, no matter how small the change, without checking it with GHC.</p>
+<h2 id="rh-include-a-header-comment">RH: Include a header comment</h2>
+<p>It must contain least your name(s), the date, and the number of the assignment.</p>
+<h1 id="formatting">Formatting</h1>
+<h2 id="fi-use-consistent-indentation">FI: Use consistent indentation</h2>
+<p>We will specify a code formatter for your Haskell code that can help with this task. Use it with your code.</p>
+<h2 id="ft-no-tab-characters">FT: No tab characters</h2>
+<p>Do not use the tab character (0x09). Instead, use spaces to control indenting. This is because the width of a tab is not uniform across all computers, and what looks good on your machine may look terrible on ours, especially if you have mixed spaces and tabs. The homework assignments include a flag that warns against inadvertent tab insertion. Don’t remove this flag.</p>
+<h2 id="f8-80-column-lines">F8: 80-column lines</h2>
+<p>No line in your program should be longer than 80 characters. Although most screens are wide enough now to display much longer lines, there are still many editors whose default width is 80 characters, and 80-character lines are the natural width for printing programs in reasonable-sized fonts.</p>
+<h2 id="fo-whitespace">FO: Whitespace</h2>
+<p>Use whitespace to delimit your code and make it easier for humans to parse. Surround binary operators with a single space on either side. Put a blank line between top-level definitions, though no blank lines between type signatures and function definitions. Align the elements in declarations and expressions that span multiple lines.</p>
+<h1 id="naming">Naming</h1>
+<h2 id="nd-use-descriptive-names">ND: Use descriptive names</h2>
+<p>Choose names that reflect the intended use of the value referred to by the name. Names are documentation. As a general rule, short names (one or a few characters) are appropriate for variables with small scopes, like local definitions or parameters to functions, whereas longer names are appropriate for global definitions, such as top-level functions.</p>
+<h2 id="nc-follow-standard-haskell-naming-conventions">NC: Follow standard Haskell naming conventions</h2>
+<ul>
+<li><p>For long names composed of multiple words, use “camelCase.” Smash the words into a long string and capitalize the first letters of the second and following words– e.g., veryLongFunctionName instead of very_long_function_name or verylongfunctionname.</p></li>
+<li><p>Module names should begin with capital letters.</p></li>
+<li><p>When pattern matching against a list, if you call the head x, then use xs for the tail.</p></li>
+<li><p>For better readability, don’t capitalize all letters when using an abbreviation. For example, write HttpServer instead of HTTPServer. Exception: Two-letter abbreviations, such as IO.</p></li>
+</ul>
+<h1 id="comments">Comments</h1>
+<h2 id="c-use-comments">C: Use comments</h2>
+<p>Most top-level declarations (data types and functions) should be preceded by a short comment, written with Haddock syntax. In a few cases, this will not be necessary (see CO).</p>
+<pre><code>-- | sums a list of integers
+sum :: [ Integer ] -&gt; Integer
+sum = foldl (+) 0</code></pre>
+<h2 id="cw-comments-should-say-what-the-code-does-not-how">CW: Comments should say what the code does, not how</h2>
+<p>It should be obvious how the code works, just by looking at it. If this is not the case, you need to rewrite the code.</p>
+<h2 id="co-do-not-over-comment">CO: Do not over-comment</h2>
+<p>Very many or very long comments (especially within the body of a function) are more distracting than helpful. Long comments may appear at the top of a file or section of code, if you need to explain the overall design of the code or refer to sources that have more information about the algorithms or data structures. All other comments in the file should be as short as possible. Judicious choice of variable names can help minimize the need for comments.</p>
+<p>Avoid comments that state the obvious:</p>
+<pre><code>-- | This function increments its argument
+inc :: Integer -&gt; Integer
+inc x = x+1</code></pre>
+<h2 id="ce-use-proper-english">CE: Use proper English</h2>
+<p>Comments need not always be written in complete sentences, but when they are, standard rules of English grammar apply. Spelling also counts.</p>
+<h1 id="functionality">Functionality</h1>
+<h2 id="fs-write-simple-functions">FS: Write simple functions</h2>
+<p>“Functions should be short and sweet, and should do just one thing. They should fit on one or two screenfuls of text (the ISO/ANSI screen size is 80x24) and do one thing and do that well.” From the Linux kernel coding style</p>
+<h2 id="fd-no-dead-code">FD: No dead code</h2>
+<p>Do not leave unused or commented out code in your submission. It detracts from the story line of your program. If you are worried about saving this code for later, copy it to a different file or use version control.</p>
+<h2 id="pf-avoid-partial-functions">PF: Avoid partial functions</h2>
+<p>Your code should always return an answer, not error. Some prelude and standard library functions are partial. Avoid these in your code! In particular, never use: head, tail, or fromJust in this class. Challenge yourself to find a better way.</p>
+<h1 id="pattern-matching">Pattern Matching</h1>
+<h2 id="pi-no-incomplete-cases">PI: No incomplete cases</h2>
+<p>Incomplete pattern matches are flagged with compiler warnings, which are treated as errors for grading purposes.</p>
+<h2 id="pf-match-in-the-function-arguments">PF: Match in the function arguments</h2>
+<p>Tuples, records and datatypes can be deconstructed using pattern matching. If you simply deconstruct the function argument before you do anything useful, it is better to pattern match in the function argument. Consider these examples:</p>
+<h3 id="bad">Bad</h3>
+<pre><code>f arg1 arg2 = ...  where
+   x = fst arg1
+   y = snd arg1
+   z = fst arg2</code></pre>
+<h3 id="good">Good</h3>
+<pre><code>f (x,y) (z,_) = ...</code></pre>
+<h2 id="pn-combine-nested-cases">PN: Combine nested cases</h2>
+<p>Rather than nest case expressions, you can combine them by pattern matching against a tuple, provided the tests in the case expressions are independent. Here is an example:</p>
+<pre><code>case x of
+  Red -&gt; case y of
+           Red  -&gt; True
+           Blue -&gt; False
+  Blue -&gt; case y of
+           Red  -&gt; False
+           Blue -&gt; True</code></pre>
+<p>vs.</p>
+<pre><code>case (x,y) of
+  (Red,   Red) -&gt; True
+  (Blue, Blue) -&gt; True
+  (   _,    _) -&gt; False</code></pre>
+<h1 id="verbosity">Verbosity</h1>
+<h2 id="vl-dont-rewrite-library-functions">VL: Don’t rewrite library functions</h2>
+<p>The Haskell library has a great number of functions and data structures – use them! Often students will recode filter, map, and similar functions. Hoogle can help you find them. Exception: Sometimes the homework may ask you to rewrite certain library functions for practice.</p>
+<h2 id="vi-misusing-if">VI: Misusing if</h2>
+<p>Remember that the type of the condition in an if expression is Bool. If the result type of the if expression is also Bool, then you probably should not be using if at all. Consider replacing the expression on the left with the one on the right.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Verbose expression</th>
+<th style="text-align: center;">Cleaner expression</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">if e then True else False</td>
+<td style="text-align: center;">e</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">if e then False else True</td>
+<td style="text-align: center;">not e</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">if e then e else False</td>
+<td style="text-align: center;">e</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">if not e then x else y</td>
+<td style="text-align: center;">if e then y else x</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">if x then True else y</td>
+<td style="text-align: center;">x || y</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">if x then y else False</td>
+<td style="text-align: center;">x &amp;&amp; y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">if x then False else y</td>
+<td style="text-align: center;">not x &amp;&amp; y</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">if x then y else True</td>
+<td style="text-align: center;">not x || y</td>
+</tr>
+</tbody>
+</table>
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>

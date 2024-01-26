@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>433 - Resources</title>
+        <link rel="stylesheet" href="./css/default.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="./">433</a>
+            </div>
+            <nav>
+                <a href="./">Home</a>
+                <a href="./syllabus.html">Syllabus</a>
+                <a href="./schedule.html">Schedule</a>
+                <a href="./resources.html">Resources</a>
+                <a href="./assignments.html">HW</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>Resources</h1>
+            <p>You should aim to get working Dafny and Haskell installations as soon as possible. That will be the focus of Assignment 0.</p>
+<h1 id="dafny-resources">Dafny Resources</h1>
+<p><a href="https://dafny.org/">Dafny</a> is a “verification-aware” object-oriented programming language that we will be using in this class. This page contains installation information for both the Dafny tools and interactive-development-environment (IDE) support, links to resources you may find useful, and explanations for how to run Dafny once it is installed.</p>
+<h2 id="installation">Installation</h2>
+<p>(<a href="https://marketplace.visualstudio.com/items?itemName=dafny-lang.ide-vscode">VS Code extension (IDE)</a> | <a href="https://dafny.org/dafny/Installation">Official Installation Instructions</a>)</p>
+<ul>
+<li>We recommend using VS Code as your IDE.</li>
+<li>(.NET SDK) Dafny and VS Code require .NET SDK 6.0 to work properly. You will need to install the SDK first.
+<ul>
+<li>(Windows) Follow <a href="https://dotnet.microsoft.com/en-us/download/dotnet/6.0">this link</a>, download the Installer under SDK 6.0.*** (the last part of the version number doesn’t matter) for your architecture, and run the installer.</li>
+<li>(Linux) In general, you need to install both dotnet-runtime and aspnetcore-runtime from your package manager or through the same link as the Windows one.</li>
+<li>(Ubuntu) sudo apt install dotnet-runtime-6.0 aspnetcore-runtime-6.0 WARNING: Do not install Dafny from apt.</li>
+<li>(Arch) sudo pacman -S dotnet-runtime-6.0 aspnet-runtime-6.0</li>
+<li>(MacOS) There are two alternatives to doing this
+<ul>
+<li>(Without Brew) Same as Windows.</li>
+<li>(With Brew) brew install dotnet@6 Installing in this way, you need to export the PATH variable properly for it to work. Please refer to the instructions in its brew info page. We don’t recommend you install Dafny from <code>brew</code> unless you know how to configure the path</li>
+</ul></li>
+</ul></li>
+<li>(Dafny) If you use VS Code as your IDE, then the Dafny extension to VS Code can install Dafny for you. Specifically, install the Dafny extension in VS Code. Then, the first time you open a Dafny file in VS Code, you will be prompted about installing the latest version of Dafny; agree to this, and Dafny will be installed automatically in your home directory (specific location depends on your operating system). There is also a <a href="https://dafny.org/dafny/Installation#Visual-Studio-Code">demo</a> that navigates you through this.</li>
+<li>If you want to use another IDE/editor, you will need to install the Dafny binaries explicitly; follow the <a href="https://dafny.org/dafny/Installation#windows-binary">Dafny binaries</a> link to do this. We don’t recommend this approach unless you understand your OS well. You will then need to configure your IDE to access the files that you installed. The link above also contains information on how to do this in Emacs.</li>
+<li>To test your installation, load file hello-world.dfy into your IDE and execute it.</li>
+<li>Troubleshooting
+<ul>
+<li>Q: My Dafny Language Server crashes, and VS Code cannot proceed! Or, I’m prompted a missing “libhostpolicy”.</li>
+<li>A: If you follow the instructions, you don’t need to make any configurations in VS Code. If you have made some configurations, please try erasing them and retrying.</li>
+<li>Q: VS Code shows that I don’t have a debuggable version of the extension when pressing “F5”.</li>
+<li>A: Click the editor window first and try again.</li>
+<li>Q: My Dafny says that the file I supplied is not a Dafny file.</li>
+<li>A: It’s most likely that you have an out-dated Dafny installation. Please remove the Dafny package you installed and install it either through VS Code or using the latest build from the Github release page.</li>
+</ul></li>
+</ul>
+<h2 id="other-resources">Other Resources</h2>
+<ul>
+<li><a href="https://dafny.org/latest/OnlineTutorial/guide">Getting Started (Tutorial)</a></li>
+<li><a href="https://dafny.org/latest/QuickReference">Quick Reference</a></li>
+<li><a href="https://dafny.org/latest/DafnyRef/DafnyRef">Language Reference Manual</a></li>
+<li><a href="https://dafny.org/latest/StyleGuide/Style-Guide">Style Guide</a></li>
+<li><a href="https://dafny.org/latest/toc">Other</a></li>
+</ul>
+<h2 id="running-dafny">Running Dafny</h2>
+<ul>
+<li>Dafny file names should end in “.dfy”.</li>
+<li>From VS Code. If you use the VS Code extension then the Dafny verifier runs continuously in the background. If you wish to execute your Dafny program, you can do one of the following:
+<ul>
+<li>Press function key F5</li>
+<li>Use Command Palette and search Dafny: Run</li>
+<li>Right-click the editor window and find Dafny &gt; Run</li>
+<li>WARNING: on Windows, if the path to your Dafny installation contains a space (i.e. ” “) then the technique could not work, due to a bug in the extension.</li>
+<li>From the command line. You can also execute the Dafny verifier and execution engine from the command line. In your binary installation locate the file “Dafny.exe.” Executing “Dafny.exe verify &lt;file.dfy&gt;” from either Windows Powershell or the Windows System for Linux (WSL) invokes the verifier on the given file. Executing “Dafny.exe run &lt;file.dfy&gt;” invokes the verifier, then executes the program. If you want to run Dafny.exe from a directory other than where it is installed, you will need to adjust your Path variable (details depend on your operating system).</li>
+</ul></li>
+</ul>
+<h1 id="haskell-resources">Haskell Resources</h1>
+<h2 id="style-guide">Style Guide</h2>
+<p>You should take a look and follow the <a href="https://www.cs.umd.edu/class/spring2024/cmsc433/style.html">style guide</a>.</p>
+<h2 id="install-stack">Install Stack</h2>
+<p>Stack is a build tool for Haskell that helps achieve reproducible builds, by managing different versions of GHC (the de-facto standard Haskell compiler) and any external packages that are needed to build your code.</p>
+<p>To install Stack, you can find the full instructions <a href="https://docs.haskellstack.org/en/stable/README/">here</a>. In short:</p>
+<ul>
+<li><p>For unix based systems you can just run:</p>
+<p>curl -sSL https://get.haskellstack.org/ | sh</p></li>
+<li><p>For Windows users, I <strong>strongly</strong> recommend using WSL2.</p></li>
+</ul>
+<h2 id="install-the-ide-of-your-choice.">Install the IDE of your choice.</h2>
+<p>You’re free to use whatever IDE you prefer.</p>
+<p>That said, I personally use emacs with <a href="https://github.com/haskell/haskell-mode">Haskell mode</a>. Another popular choice is <a href="https://code.visualstudio.com/">VSCode</a>.</p>
+<p>You should now be able to play around! If you run:</p>
+<pre><code>stack new &lt;project-name&gt;</code></pre>
+<p>you can play around by editing files in the app and src folders.</p>
+<h2 id="library-reference">Library Reference</h2>
+<ul>
+<li><p><a href="https://hoogle.haskell.org/">Hoogle</a> is your friend! It searches many Haskell libraries by name or approximate type signature!</p></li>
+<li><p><a href="https://hackage.haskell.org/package/base-4.14.0.0/docs/Prelude.html">Prelude</a> is the set of functions loaded by default in every Haskell file.</p></li>
+</ul>
+<h2 id="further-reading">Further Reading</h2>
+<ul>
+<li><p><a href="http://book.realworldhaskell.org/">Real World Haskell</a> is an amazing resource for getting into low-level details of using Haskell effectively in “real world” projects.</p></li>
+<li><p><a href="https://www.youtube.com/watch?v=JJv74IJUp4E">Algorithm Design with Haskell</a> is a new book focusing on writing algorithms with Haskell.</p></li>
+</ul>
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>

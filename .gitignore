@@ -1,3 +1,6 @@
 *.hi
 *.o
 .direnv
+website/_cache
+website/code/intro-template/.stack-work/
+website/.stack-work

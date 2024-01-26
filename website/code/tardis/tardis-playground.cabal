@@ -1,0 +1,36 @@
+cabal-version:       >=1.10
+
+name:                tardis-playground
+version:             0.1.0.0
+synopsis:            Playing around with time travel
+license:             OtherLicense
+license-file:        LICENSE
+maintainer:          leonidas@umd.edu
+build-type:          Simple
+extra-source-files:  CHANGELOG.md
+
+executable Tardis-fun
+  main-is:             LastOcc.hs
+  build-depends:       base >= 4.14
+                     , HUnit >= 1.6
+                     , QuickCheck >= 2.14
+                     , containers >= 0.6
+                     , tardis
+  default-language:    Haskell2010
+  ghc-options:         -Wincomplete-patterns -Wno-missing-signatures
+  default-extensions:  ScopedTypeVariables
+                     , TypeApplications
+                     , InstanceSigs
+                     , KindSignatures
+                     , LambdaCase
+                     , DeriveFunctor
+                     , DeriveFoldable
+                     , DeriveTraversable
+                     , GeneralizedNewtypeDeriving
+                     , TupleSections
+                     , MultiParamTypeClasses
+                     , FlexibleInstances
+                     , FlexibleContexts
+                     , UndecidableInstances
+                     , NoMonomorphismRestriction
+                     , NoStarIsType
