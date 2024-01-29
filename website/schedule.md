@@ -4,8 +4,8 @@ title: Schedule
 
 | Week | Due | Tuesday | Thursday |
 | :---: | :---: | :---: | :---: |
-| 1/25 | Installations! | | | 
-| 1/30 | | | | 
+| 1/25 | Installations! | - | PLMW Quiz! | 
+| 1/30 | [Assignment 0](assignments/0.html) | Programming in Dafny ([code](code/Programming-in-Dafny.dfy), [slides](code/Programming-in-Dafny.html)) | | 
 | 2/06 | | | |
 | 2/13 | | | |
 | 2/20 | | | |
