@@ -31,7 +31,7 @@ but not prior knowledge of Haskell or Dafny.
 
 | Name | email | Hours (AVW 4140) | Hours (Discord) |
 | :---------: | :----------: | :----: | :-----: |
-| [Leonidas Lampropoulos](https://lemonidas.github.io/) | leonidas@umd.edu | M 1pm-2pm (IRB 5148) | W 2p-3pm |
+| [Leonidas Lampropoulos](https://lemonidas.github.io/) | leonidas@umd.edu | M 1pm-2pm (IRB 5248) | W 2p-3pm |
 | Le Chang | lchang21@umd.edu | F 1pm-2pm | Tu 11am-12pm |
 | Sam Lam | slam1@umd.edu | F 3pm-4pm | M 2pm-3pm |
 | Mingwei Zhu | mzhu1@terpmail.umd.edu | F 2pm-3pm | Th 1pm-2pm |

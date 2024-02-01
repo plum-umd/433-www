@@ -1,18 +1,20 @@
 // Programming in Dafny, by example
 
 // Write an XOR function - In class
-
+predicate xor(a: bool, b: bool) {
+  (a && !b) || (!a && b)
+}
 
 // Convert the following ocaml expression into Dafny:
 // let x = 42 in fst (x,x)
 function test_tuple_let():int {
-  42
+  var x := 42; (x,x).0
 }
 
 // Write an identity function applied to 42.
 // (fun x -> x) 42
 function id_42(): int {
-  42 
+  ((x:int) => x)(42)
 }
 
 // Convert the following OCaml Program to Dafny
@@ -21,6 +23,15 @@ function id_42(): int {
 //   match t with 
 //   | Leaf -> 0
 //   | Node (x,l,r) -> 1 + size l + size r
+datatype Tree<T> = 
+  | Leaf
+  | Node(T, Tree, Tree)
+
+function size<T>(t: Tree<T>):int {
+  match t 
+  case Leaf => 0
+  case Node (_,l,r) => 1 + size(l) + size(r)
+}
 
 // (==), 0, 00, !new
 
@@ -44,17 +55,29 @@ function id_42(): int {
 //   | Some z -> Some (z * z)
 //   | None -> None
 
+function f<T>(x : T): Status<T> {
+  Success(x)
+}
+
+function g(y : int): Status<int> {
+  var z :- f(y);
+  Success (z * z)
+}
 
 // Write a method that initializes an array
 method array_playground() returns (r : array<int>) {
+  r := new int[5];
+  for i := 0 to 5 {
+    r[i] := 42;
+  }
 }
 
 
 method Main() {
   // print (xor(true, false));
-//  print test_tuple_let(), "\n";
-//  print id_42(), "\n";
-//  print size(Node(42,Leaf,Leaf)), "\n";
+  print test_tuple_let(), "\n";
+  print id_42(), "\n";
+  print size(Node(42,Leaf,Leaf)), "\n";
 
 }
 
