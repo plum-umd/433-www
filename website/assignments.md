@@ -5,7 +5,7 @@ title: Assignments + Final Project
 # Assignments
 
 - [Assignment 0: Software Installation](assignments/0.html) - Due Friday, February 2nd
-- [Assignment 1: Dafny Basics]() - Due TBD
+- [Assignment 1: Dafny Basics](assignments/1.html) - Due Friday, February 9th
 - [Assignment 2: Dafny Verification]() - Due TBD
 - [Assignment 3: Haskell Basics]() - Due TBD
 - [Assignment 4: MiniDafny - Printing + Interpreter]() - Due TBD
