@@ -9,10 +9,17 @@ method Find(a: array<int>, key: int) returns (index: int)
 {
   index := 0;
   while index < a.Length
+    invariant index <= a.Length
+    invariant forall k :: 0 <= k < index ==> a[k] != key
   {
-    if a[index] == key { return; }
+    if a[index] == key 
+    { 
+      return; 
+      // {{ a[index] == key }}
+    }
     index := index + 1;
   }
   index := -1;
+  // {{ forall k :: 0 <= k < a.Length ==> a[k] != key }}
 }
 
