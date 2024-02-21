@@ -5,10 +5,6 @@
 // This assignment contains nine questions, each of which involves writing Dafny
 // code. You should include your solutions in a single Dafny file and submit it using
 // Gradescope.
-//
-// Revision history
-//
-// 2023-09-22 2:50 pm   Fixed typo in Problem 3.
 
 
 // Question 1 (5 points)
