@@ -74,7 +74,7 @@ for this new type of `DList`s. Remember that `DList a` is just a synonym for `[a
 -- >>> toList empty
 -- []
 empty :: DList a
-empty = \x -> x 
+empty = id
 
 -- | Create a DList containing a single element
 -- >>> toList (singleton "a")
@@ -86,13 +86,27 @@ singleton = (:)
 -- >>> toList ((singleton "a") `append` (singleton "b"))
 -- ["a","b"]
 append :: DList a -> DList a -> DList a
-append = (.)
+-- l1 :: [a] -> [a]
+-- l1 = \xs -> 1 : 2 : 3 : xs 
+-- l2 :: [a] -> [a]
+-- l2 = \xs -> 4 : 5 : xs
+-- \xs -> 1 : 2 : 3 : 4 : 5 : xs
+append l1 l2 = \xs -> l1 (l2 xs) 
+append = (.) 
+
+-- f . g = \x -> f (g x)
 
 -- | Construct a DList from a head element and tail
 -- >>> toList (cons "a" (singleton "b"))
 -- ["a","b"]
 cons :: a -> DList a -> DList a
-cons x d = (x:) . d
+-- x :: a
+-- d :: \xs -> 2 : 3 : xs
+-- cons x d = \xs -> x : 2 : 3 : xs 
+cons x = ((x:) .)
+  -- \xs -> x : d xs 
+
+
 
 {-
 Now write a function to convert a regular list to a `DList` using the above
@@ -103,7 +117,7 @@ definitions and `foldr`.
 -- >>> toList (fromList [1,2,3])
 -- [1,2,3]
 fromList :: [a] -> DList a
-fromList = foldr cons empty
+fromList = undefined
 
 {-
 Micro-benchmarks

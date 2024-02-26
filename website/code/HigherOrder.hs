@@ -1,7 +1,7 @@
 {-
 ---
 fulltitle: Higher-Order Programming Patterns
-date: September 13, 2021
+date: February 22, 2024
 ---
 -}
 
@@ -42,7 +42,7 @@ Or you can make a list containing the functions
 -}
 
 funs :: [Int -> Int]
-funs = undefined
+funs = [plus1, minus1]
 
 {-
 Taking Functions as Input
@@ -301,6 +301,7 @@ mechanism to create such *anonymous* functions. For example,
 
     \x -> x + 1
 
+
 is an expression that corresponds to a function that takes an argument `x` and
 returns as output the value `x + 1`. The function has no name, but we can
 use it in the same place where we would write a function.
@@ -324,6 +325,7 @@ a value with a function type.
 
 Of course, we could name the function if we wanted to
 -}
+
 
 plus1' :: Int -> Int
 plus1' = \x -> x + 1
@@ -416,7 +418,7 @@ following test passes.
 -}
 
 singleton :: a -> [a]
-singleton = undefined
+singleton = (: [])  
 
 singletonTest :: Test
 singletonTest = singleton True ~?= [True]
@@ -635,6 +637,7 @@ map :: (a -> b) -> [a] -> [b]
 map _ [] = []
 map f (x : xs) = f x : map f xs
 
+
 {-
 The type of `map` tells us exactly what it does: it takes an `a -> b`
 transformer and list of `a` values, and transforms each `a` value to return
@@ -646,7 +649,7 @@ toUpperString' :: String -> String
 toUpperString' xs = map toUpper xs
 
 shiftPoly' :: XY -> Polygon -> Polygon
-shiftPoly' d = undefined
+shiftPoly' d = map $ shiftXY d
 
 {-
 Much better.  But let's make sure our refactoring didn't break anything!
@@ -692,7 +695,7 @@ We can write this more cleanly with map, of course:
 -}
 
 listIncr' :: [Int] -> [Int]
-listIncr' = undefined
+listIncr' = map (+1) 
 
 {-
 Computation Pattern: Folding
@@ -724,7 +727,7 @@ into parameters, and lo!
 -}
 
 foldr :: (a -> b -> b) -> b -> [a] -> b
-foldr _f base [] = base
+foldr _ base [] = base
 foldr f base (x : xs) = x `f` foldr f base xs
 
 {-
@@ -770,7 +773,9 @@ from our list-length function?
 -}
 
 len' :: [a] -> Int
-len' = undefined
+len' = foldr (const (1+)) 0
+
+
 
 {-
 Once you have defined `len` in this way, see if you can trace how it
@@ -791,7 +796,7 @@ factorial 0 = 1
 factorial n = n * factorial (n -1)
 
 factorial' :: Int -> Int
-factorial' n = undefined
+factorial' n = product [1..n]
 
 {-
 OK, one more.  The standard list library function `filter` has this
@@ -816,7 +821,11 @@ testFilter =
 Can we implement filter using foldr?  Sure!
 -}
 
-filter pred = undefined
+--filter pred [] = []
+--filter pred (x : xs) =
+--  (if pred x then [x] else []) ++ (filter pred xs)
+
+filter pred = foldr (\a -> if pred a then (a:) else id) [] 
 
 runTests :: IO Counts
 runTests = runTestTT $ TestList [testMap, testFoldr, testFilter]
