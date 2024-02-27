@@ -1,7 +1,7 @@
 cabal-version:       >=1.10
-name:                cmsc488b-trees
+name:                cmsc433-trees
 version:             0.1.0.0
-synopsis:            Class materials from CMSC 488B, UMD
+synopsis:            Class materials from CMSC 433, UMD
 description:         Datatypes and Trees
 license:             MIT
 license-file:        LICENSE

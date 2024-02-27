@@ -30,7 +30,7 @@ method Swap (a : array<int>, i : int, j : int)
 {
     var tmp : int := a[i];
     a[i] := a[j];
-    a[j] := a[i];
+    a[j] := tmp;
 }
 
 // Question 3 (5 points)

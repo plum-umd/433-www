@@ -1,10 +1,10 @@
 {-
 ---
 fulltitle: "In class exercise: foldr"
-date: September 20, 2021
+date: February 26, 2024
 ---
 
-In [HigherOrder](../01-intro/HigherOrder.html) we saw a few functions that you could write using the
+In HigherOrder.hs we saw a few functions that you could write using the
 general purpose 'foldr' function. This function captures the general pattern of
 list recursion and is also good practice for working with higher-order functions.
 
@@ -121,9 +121,6 @@ testAll =
       ]
 
 {-
-And trace through an evaluation `all not [True,False]`:
-
-(Also available from [online tool](http://bm380.user.srcf.net/cgi-bin/stepeval.cgi?expr=let+all+p+%3D+foldr+%28%5Cx+y+-%3E+p+x+%26%26+y%29+True+in%0D%0Aall+not+%5BTrue%2CFalse%5D+%0D%0A++%0D%0A).)
 
 Last
 ----
