@@ -109,8 +109,8 @@ for representing shapes:
 -}
 
 data Shape
-  = Circle Double Double Double
-  | Rectangle Double Double Double Double
+  = Circle Double Double Double            -- Circle of float * float * float 
+  | Rectangle Double Double Double Double  -- 
   deriving (Eq, Show)
 
 {-
@@ -206,7 +206,8 @@ Rewrite this function using selectors `x` and `y`:
 -}
 
 distFromOrigin' :: Point -> Double
-distFromOrigin' p = undefined
+distFromOrigin' p = sqrt (x p * x p + y p * y p)
+
 
 {-
 Which version is easier to read? Opinions differ.
@@ -298,7 +299,8 @@ of `head` is not partial like the one for regular lists.)
 -- >>> safeHead oneTwoThree
 -- 1
 safeHead :: IntListNE -> Int
-safeHead = undefined
+safeHead (ISingle x) = x
+safeHead (ICons x il) = x
 
 {-
 We can define functions by recursion on `IntListNE`s too, of course. Write a function
@@ -308,7 +310,8 @@ to calculate the sum of a non-empty list of integers.
 -- >>> sumOfIntListNE oneTwoThree
 -- 6
 sumOfIntListNE :: IntListNE -> Int
-sumOfIntListNE = undefined
+sumOfIntListNE (ISingle x) = x
+sumOfIntListNE (ICons x xs) = x + sumOfIntListNE xs
 
 {-
 Polymorphic Datatypes
@@ -345,7 +348,7 @@ justTrue :: Maybe Bool
 justTrue = Just True
 
 justThree :: Maybe Int
-justThree = undefined
+justThree = Just 3
 
 {-
 A number of other polymorphic datatypes appear in the standard
@@ -368,6 +371,7 @@ For example, here's a safer integer division function:
 safeDiv :: Int -> Int -> Either String Int
 safeDiv _ 0 = Left "You can't divide by zero, silly."
 safeDiv x y = Right $ x `div` y
+           -- Right (div x y)
 
 {-
 Of course, `Either` is more useful when things can go wrong in more
@@ -412,7 +416,8 @@ We can write simple functions on trees by recursion:
 -- >>> treePlus (Branch 2 Empty Empty) 3
 -- Branch 5 Empty Empty
 treePlus :: Tree Int -> Int -> Tree Int
-treePlus = undefined
+treePlus Empty n = Empty
+treePlus (Branch x l r) n = Branch (x + n) (treePlus l n) (treePlus r n)
 
 {-
 We can accumulate all of the elements in a tree into a list:
@@ -432,7 +437,8 @@ infixOrder (Branch x l r) = infixOrder l ++ [x] ++ infixOrder r
 -- [5,2,1,4,9,7]
 
 prefixOrder :: Tree a -> [a]
-prefixOrder = undefined
+prefixOrder Empty = []
+prefixOrder (Branch x l r) = [x] ++ prefixOrder l ++ prefixOrder r
 
 {-
 (NOTE: This is a simple way of defining a tree walk in Haskell, but it is not
@@ -455,8 +461,8 @@ write this:
 
 -- >>> treeIncr (Branch 1 (Branch 2 Empty Empty) Empty)
 -- Branch 2 (Branch 3 Empty Empty) Empty
-treeIncr :: Tree Int -> Tree Int
-treeIncr = treeMap (+ 1)
+treeIncr :: Tree Int -> Int -> Tree Int
+treeIncr n = treeMap (+ n)
 
 main :: IO ()
 main = do

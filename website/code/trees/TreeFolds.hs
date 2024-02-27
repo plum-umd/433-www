@@ -102,11 +102,16 @@ We can improve things by using DLists while traversing the tree. Try to
 -}
 
 infixOrder1 :: Tree a -> [a]
-infixOrder1 t = DL.toList (go t)
-  where go :: Tree a -> DL.DList a
-        go Empty = DL.empty
-        go (Branch x l r) =
-          DL.append (go l) $ DL.append (DL.singleton x) $ go r
+infixOrder1 t = DL.toList (aux t)
+  where aux :: Tree a -> DL.DList a
+        aux Empty = DL.empty
+        aux (Branch x l r) = DL.append (aux l) $ DL.append (DL.singleton x) $ aux r
+
+--  DL.toList (go t)
+--  where go :: Tree a -> DL.DList a
+--        go Empty = DL.empty
+--        go (Branch x l r) =
+--          DL.append (go l) $ DL.append (DL.singleton x) $ go r
 
 tinfixOrder1 :: Test
 tinfixOrder1 = "infixOrder1a" ~: infixOrder1 exTree ~?= [1, 2, 4, 5, 9, 7]
@@ -154,19 +159,20 @@ foldrTree f b (Branch x l r) =
 -}
 
 infixOrder4 :: Tree a -> [a]
-infixOrder4 = foldrTree (:) []
+infixOrder4 = foldrTree (\a b -> [a] ++ b) [] 
 
 sizeTree :: Tree Int -> Int
-sizeTree = foldrTree (const (1 +)) 0
+sizeTree = foldrTree (const (+1)) 0
 
 sumTree :: Tree Int -> Int
 sumTree = foldrTree (+) 0
 
 anyTree :: (a -> Bool) -> Tree a -> Bool
-anyTree f = foldrTree (\x b -> f x || b) False
+anyTree f = undefined 
 
 allTree :: (a -> Bool) -> Tree a -> Bool
-allTree f = foldrTree (\x b -> f x && b) True
+allTree p = foldrTree ((&&) . p) True
+ 
 
 {-
 Now use `foldrTree` as an inspiration to define a `foldlTree` function, which
@@ -202,7 +208,9 @@ Define `foldrTree` and `foldlTree` in terms of `foldTree`.
 -}
 
 foldrTree' :: (a -> b -> b) -> b -> Tree a -> b
-foldrTree' = undefined
+foldrTree' f acc t = foldTree aux id t acc
+  aux :: a -> (b -> b) -> (b -> b) -> (b -> b)
+  aux a bl br b = bl (f a (br b)) -- Can be written inline as bl . f a . br
 
 tree1 :: Tree Int
 tree1 = Branch 1 (Branch 2 Empty Empty) (Branch 3 Empty Empty)

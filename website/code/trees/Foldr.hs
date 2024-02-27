@@ -41,7 +41,7 @@ Now we can rewrite it in terms of foldr.
 -- >>> length ""
 -- 0
 length :: [a] -> Int
-length = foldr (\_ n -> 1 + n) 0
+length = foldr (const (+1)) 0
 
 {-
 and test it on some inputs
@@ -110,7 +110,7 @@ Now implement using foldr
 -- >>> all (>0) ([1 .. 20] :: [Int])
 -- True
 all :: (a -> Bool) -> [a] -> Bool
-all p = undefined
+all p = foldr ((&&) . p) True
 
 testAll :: Test
 testAll =
@@ -135,6 +135,9 @@ last1 [] = Nothing
 last1 (x : xs) = case xs of
   [] -> Just x
   _ -> last1 xs
+-- last1 [x] = Just x
+-- last1 (_ : l) = last1 l
+
 
 {-
 Now implement using foldr
@@ -145,7 +148,9 @@ Now implement using foldr
 -- >>> last ""
 -- Nothing
 last :: [a] -> Maybe a
-last = undefined
+last = foldr (\a b -> case b of
+                        Nothing -> Just a
+                        Just x -> Just x) Nothing
 
 {-
 >
@@ -171,7 +176,7 @@ of the first list for which the input function returns `True`.
 -}
 
 filter :: (a -> Bool) -> [a] -> [a]
-filter p = undefined
+filter p = foldr (\a b -> if p a then a:b else b) []
 
 testFilter :: Test
 testFilter =
