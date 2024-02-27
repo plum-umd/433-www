@@ -1,15 +1,14 @@
 {-
 ---
 fulltitle: Haskell Basics
-date: Janury 25, 2022
+date: February 20, 2024
 ---
 
 Welcome to Haskell!
 -------------------
 
 If you are reading this text online, you may wish to access it as a
-Haskell project instead. You can find this module as part of the
-repository [intro]() on github. We strongly encourage you to read this
+Haskell project instead. We strongly encourage you to read this
 file in your editor so that you can experiment with it.
 
 Every Haskell file begins with a few lines naming the module (this
@@ -147,7 +146,7 @@ Furthermore, you'll also find characters, strings and boolean values.
 
 -- >>> "abcd" :: String            -- strings
 
--- >>> "cmsc" ++ "488X"              -- string concatenation
+-- >>> "cmsc" ++ "433"              -- string concatenation
 
 -- >>> True :: Bool                -- boolean values
 
@@ -307,26 +306,28 @@ to do *something*, so we demonstrate that next.
 The GHC System
 --------------
 
-We'll start with a few examples just using the interactive toplevel for the
-Haskell language. Although Haskell is a compiled language, the interactive
-toplevel, "ghci" is available for experimentation. You can access this
-toplevel using any command prompt (i.e. Terminal), as long as you have GHC
-installed. The examples below also assume that you have the "stack" tool
-available and that you have started the command prompt in the same directory
-that contains this source code. [Instructions for installing "stack" and
-other tools are available.](https://www.cs.umd.edu/class/spring2022/cmsc488B/resources.html)
+We'll start with a few examples just using the interactive toplevel
+for the Haskell language. Although Haskell is a compiled language, the
+interactive toplevel, "ghci" is available for experimentation. You can
+access this toplevel using any command prompt (i.e. Terminal), as long
+as you have GHC installed. The examples below also assume that you
+have the "stack" tool available and that you have started the command
+prompt in the same directory that contains this source
+code. Instructions for installing "stack" and other tools are
+available at the course website
+(https://www.cs.umd.edu/class/spring2024/cmsc433/resources.html)
 
 First use the terminal to start `ghci` and instruct it to load the `Basics`
 module.
 
     lemonidas@Admitted % stack ghci Basics.hs
-    cmsc488X> configure (lib)
-    cmsc488X> initial-build-steps (lib)
-    Configuring GHCi with the following packages: cmsc488X
-    GHCi, version 8.8.3: https://www.haskell.org/ghc/  :? for help
-    [1 of 1] Compiling Basics           ( /Users/lemonidas/488b/intro/Basics.hs, interpreted )
+    cmsc433> configure (lib)
+    cmsc433> initial-build-steps (lib)
+    Configuring GHCi with the following packages: cmsc433
+    GHCi, version 8.10.4: https://www.haskell.org/ghc/  :? for help
+    [1 of 1] Compiling Basics           ( /Users/lemonidas/433/intro/Basics.hs, interpreted )
     Ok, one module loaded.
-    Loaded GHCi configuration from /private/var/folders/p3/pkythxvx6rq9q054797y4bb80000gn/T/haskell-stack-ghci/48e82592/ghci-script
+    Loaded GHCi configuration from /tmp/haskell-stack-ghci/eddd6679/ghci-script
     *Basics>
 
 Now, with the prompt from the module, you can ask for the values, types and
@@ -389,9 +390,9 @@ many = do
   putStr "\n" -- don't forget the newline
 
 {-
-Note: white-space is significant here. The `do` notation sequences actions, but
-each action in the sequence must start at the same character offset: all of
-the `putStr`s must be lined up.
+Note: white-space is significant here. The `do` notation sequences
+actions, but each action in the sequence must start at the same
+character offset: all of the `putStr`s must be lined up.
 
 Sometimes people put the `do` on a line by itself and then start the list
 of actions on the next line. This saves column width in larger developments.
@@ -425,7 +426,7 @@ query = do
   putStr "What is your name? "
   n <- getLine
   let y :: String
-      y = "Welcome to CMSC 488X " ++ n
+      y = "Welcome to CMSC 433 " ++ n
   putStrLn y
 
 {-
@@ -440,7 +441,7 @@ query' :: IO ()
 query' = do
   _m <- putStr "What is your name? "
   n <- getLine
-  putStrLn ("Welcome to CMSC 488X " ++ n)
+  putStrLn ("Welcome to CMSC 433 " ++ n)
   _st <- query2
   return ()
 
@@ -692,9 +693,9 @@ jn' = undefined
 -}
 
 location :: String -> Maybe String
-location "cmsc488X" = Just "CSI 3117"
-location "cmsc330"  = Just "IRB 1207"
-location "cmsc430"  = Just "CSI 2117"
+location "cmsc433" = Just "CSI 1115"
+location "cmsc330" = Just "CSI 1115"
+location "cmsc430" = Just "HJP 0226"
 location _ = Nothing -- wildcard pattern, matches anything
 
 {-
@@ -751,7 +752,7 @@ l6 = []
 -}
 
 l7 :: String
-l7 = ['h', 'e', 'l', 'l', 'o', ' ', '4', '8', '8', '!']
+l7 = ['h', 'e', 'l', 'l', 'o', ' ', '4', '3', '3', '!']
 
 {-
 What is the value of l7?

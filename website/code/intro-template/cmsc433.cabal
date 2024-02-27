@@ -1,7 +1,7 @@
 cabal-version:       >=1.10
-name:                cmsc488x
+name:                cmsc433
 version:             0.1.0.0
-synopsis:            Class materials from CMSC 488X, UMD
+synopsis:            Class materials from CMSC 433, UMD
 description:         Course introduction: lists and higher-order functions
 bug-reports:         leonidas@umd.edu
 license:             MIT
