@@ -10,7 +10,7 @@ title: Schedule
 | 2/13 | | [Hoare Logic](code/HoareLogicAssertions.dfy) | (continuation) |
 | 2/20 | [Assignment 2](assignments/2.html) | From OCaml To Haskell [Basics.hs](code/intro-template.zip) | [HigherOrder.hs](code/HigherOrder.hs), [DList.hs](code/DList.hs), [SecretCode.hs](code/SecretCode.hs) |
 | 2/27 | | [Trees + Folds](code/trees.zip) | [Typeclasses](code/typeclasses.zip) |
-| 3/05 | [Assignment 3](assignments/3.html) | [Monads!](code/monads.zip) | |
+| 3/05 | [Assignment 3](assignments/3.html) | [Monads!](code/monads.zip) | [State Monad](code/state.zip), [Pretty Printing](code/Printing.hs) |
 | 3/12 | | | | 
 | 3/19 | | Spring Break| Spring Break | 
 | 3/26 | | Midterm Review | Midterm (in class) | 
