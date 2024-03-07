@@ -1,4 +1,4 @@
-# Revision history for cis552-intro
+# Revision history for cis552-persistent
 
 ## 0.1.0.0 -- YYYY-mm-dd
 

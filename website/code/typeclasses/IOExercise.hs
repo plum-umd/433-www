@@ -1,7 +1,6 @@
 {-
 ---
 fulltitle: "In class exercise: IOExercise"
-date: Februrary 3, 2022
 ---
 
 In-class exercise (IO Monad)

@@ -1,7 +1,7 @@
 cabal-version:       >=1.10
-name:                cmsc488b-classes
+name:                cmsc433-classes
 version:             0.1.0.0
-synopsis:            Class materials from CMSC 488b, UMD
+synopsis:            Class materials from CMSC 433, UMD
 description:         Type classes
 license-file:        LICENSE
 maintainer:          leonidas@umd.edu
@@ -11,7 +11,7 @@ extra-source-files:  CHANGELOG.md
 library
   exposed-modules:     Classes
                      , IOExercise
---                     , MonoidFoldable
+                     , MonoidFoldable
   -- other-modules:
   default-extensions:  MultiParamTypeClasses, FlexibleInstances, InstanceSigs, ScopedTypeVariables, NoStarIsType
   build-depends:       base >= 4.14, HUnit >= 1.6, filepath >= 1.4

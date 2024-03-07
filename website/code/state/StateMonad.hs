@@ -1,7 +1,7 @@
 {-
 ---
 fulltitle: The State Monad!
-date: March 1, 2022
+date: March 7, 2022
 ---
 
 Set-up

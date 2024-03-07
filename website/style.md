@@ -56,18 +56,8 @@ Any code you submit must be accepted by GHC without errors or
 warnings. Never submit anything that you have changed, no matter how
 small the change, without checking it with GHC.
 
-## RH: Include a header comment
-
-It must contain least your name(s), the date, and the number of the
-assignment.
-
 # Formatting
 
-## FI: Use consistent indentation
-
-We will specify a code formatter for your Haskell code that can help
-with this task. Use it with your code.
-        
 ## FT: No tab characters
 
 Do not use the tab character (0x09). Instead, use spaces to control

@@ -1,7 +1,7 @@
 {-
 ---
 fulltitle: Type Classes
-date: February 3, 2022
+date: February 29, 2024
 ---
 -}
 {-# LANGUAGE InstanceSigs #-}
