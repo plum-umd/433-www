@@ -79,10 +79,10 @@ data Statement =
     Decl Binding Expression            -- var x : int := e;
   | New  Binding Expression            -- var x : array<int> := new int[e];> 
   | Assert Predicate                   -- (assert FOO)
-  | Assign Var Expression              -- x = e
-  | If Expression Block Block          -- if e then s1 else s2 end
+  | Assign Var Expression              -- x := e
+  | If Expression Block Block          -- if e { s1 } else { s2 }
   | While [Predicate] Expression Block -- while e [invariant P] { s }
-  | Empty                              -- ';'
+  | Empty                              -- 
   deriving (Eq, Show)
 
 -- | Expressions are variables, literal constants, or operators applied
