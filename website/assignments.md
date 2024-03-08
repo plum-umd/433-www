@@ -8,8 +8,8 @@ title: Assignments + Final Project
 - [Assignment 1: Dafny Basics](assignments/1.html) - Due Friday, February 9th
 - [Assignment 2: Dafny Verification](assignments/2.html) - Due Friday, February 23rd
 - [Assignment 3: Haskell Basics](assignments/3.html) - Due March 8th
-- [Assignment 4: MiniDafny - Printing + Interpreter]() - Due TBD
-- [Assignment 5: MiniDafny - Parsing]() - Due TBD
+- [Assignment 4: MiniDafny - Printing]() - Due March 15th
+- [Assignment 5: MiniDafny - Interpreter + Parsing]() - Due TBD
 - [Assignment 6: MiniDafny - Verification Conditions]() - Due TBD
 
 The exact details of these assignments, including their number/topic
