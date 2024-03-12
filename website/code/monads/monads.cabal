@@ -16,6 +16,7 @@ library
                      , HUnit >= 1.6
                      , QuickCheck >= 2.14
                      , containers >= 0.6
+                     , mtl
   default-language:    Haskell2010
   ghc-options:         -Wincomplete-patterns -Wno-missing-signatures
   default-extensions:  ScopedTypeVariables

@@ -137,17 +137,38 @@ treverse = "reverse" ~: TestList
     [reverse [3,2,1] ~?= ([1,2,3] :: [Int]),
      reverse [1]     ~?= ([1]     :: [Int]) ]
 
+zip :: [a] -> [b] -> [(a, b)]
+zip xs ys = g 0 xs ys
+  where
+    g _ [] _ = []
+    g _ _ [] = []
+    g n (x:xs) (y:ys) = (x,y) : g (n+1) xs ys
+
 -- Part Four
 
-zip xs ys = g 0 xs ys where
-  g n xs ys = if n == length xs || n == length ys then [] else
-          (xs !! n, ys !! n) : g (n + 1) xs ys
+--zip xs ys = g 0 xs ys where
+--  g n xs ys = if n == length xs || n == length ys then [] else
+--          (xs !! n, ys !! n) : g (n + 1) xs ys
 
 tzip :: Test
 tzip = "zip" ~:
   TestList [ zip "abc" [True,False,True] ~?= [('a',True),('b',False), ('c', True)],
              zip "abc" [True] ~?= [('a', True)],
              zip [] [] ~?= ([] :: [(Int,Int)]) ]
+
+
+stranspose :: [[a]] -> [[a]]
+stranspose [] = []
+stranspose ([]:_) = []
+stranspose list = heads list : stranspose (corr list)
+
+heads [] = []
+heads ([]:row) = heads row
+heads ((x:_):row) = x: heads row 
+
+corr [] = []
+corr ([]:row) = corr row 
+corr ((_:xs):row) = xs : corr row
 
 --------------------------------------------------------------------------------
 -- Problem (List library chops)
@@ -251,7 +272,16 @@ tendsWith = "endsWith" ~: (assertFailure "testcase for endsWith" :: Assertion)
 -- [[1,3],[2,4]]
 -- (WARNING: this one is tricky!)
 transpose :: [[a]] -> [[a]]
-transpose = undefined
+transpose [] = []
+transpose xss = transpose' xss
+  where transpose' [] = nils
+        transpose' (xs:xss) = zipWith (:) xs (transpose' xss)
+
+        nils = repeat []
+        
+        zipWith f [] _ = []
+        zipWith f _ [] = []
+        zipWith f (x:xs) (y:ys) = f x y : zipWith f xs ys
 
 ttranspose :: Test
 ttranspose = "transpose" ~: (assertFailure "testcase for transpose" :: Assertion)
@@ -411,7 +441,13 @@ tconcat' = "concat" ~: (assertFailure "testcase for concat" :: Assertion)
 -- NOTE: use foldr for this one, but it is tricky! (Hint: the value returned by foldr can itself be a function.)
 
 startsWith' :: String -> String -> Bool
-startsWith' = undefined
+startsWith' s1 s2 =
+  foldr (\c acc -> \s -> case s of
+                           [] -> False
+                           a:as -> a == c && acc as
+            ) (\s -> True) s1 s2
+
+
 tstartsWith' = "tstartsWith'" ~: (assertFailure "testcase for startsWith'" :: Assertion)
 
 -- INTERLUDE: para
