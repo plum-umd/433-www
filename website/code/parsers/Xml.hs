@@ -15,7 +15,8 @@ This exercise is based on the following definitions from the `Parsers`
 lecture. Make sure that you have downloaded the solution.
 -}
 
-import ParserCombinators (Parser, char, doParse, filter, satisfy, string)
+import Parser (Parser, char, string, doParse)
+import qualified Parser as P
 import System.IO
 import Prelude hiding (filter)
 

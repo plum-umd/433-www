@@ -1,7 +1,7 @@
 {-
 ---
 fulltitle: Parsing with Applicative Functors
-date: March 3, 2022
+date: March 14, 2024
 ---
 -}
 {-# LANGUAGE InstanceSigs #-}
@@ -14,6 +14,7 @@ import Control.Monad (guard)
 import Data.Char
 import Text.Read (readMaybe)
 import Prelude hiding (filter)
+import Control.Arrow (first)
 
 {-
 What is a Parser?

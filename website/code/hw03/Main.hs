@@ -95,10 +95,8 @@ where) can and should be renamed.
 
 -- Part One
 
-abc x y z =
-  if x then if y then True else
-       if (x && z) then True else False
-  else False
+abc :: Bool -> Bool -> Bool -> Bool
+abc x y z = x && (y || z)
 
 tabc :: Test
 tabc = "abc" ~: TestList [abc True False True  ~?= True,
@@ -108,14 +106,7 @@ tabc = "abc" ~: TestList [abc True False True  ~?= True,
 -- Part Two
 
 arithmetic :: ((Int, Int), Int) -> ((Int,Int), Int) -> (Int, Int, Int)
-arithmetic x1 x2 =
-     let a = fst (fst x1) in
-     let b = snd (fst x1) in
-     let c = snd x1 in
-     let d = fst (fst x2) in
-     let e = snd (fst x2) in
-     let f = snd x2
-       in
+arithmetic ((a,b),c) ((d,e),f) =
        ((((((b*f) - (c*e)), ((c*
        d) - (a*f)
        ), ((a*e)-(b*d))))))
@@ -137,38 +128,17 @@ treverse = "reverse" ~: TestList
     [reverse [3,2,1] ~?= ([1,2,3] :: [Int]),
      reverse [1]     ~?= ([1]     :: [Int]) ]
 
-zip :: [a] -> [b] -> [(a, b)]
-zip xs ys = g 0 xs ys
-  where
-    g _ [] _ = []
-    g _ _ [] = []
-    g n (x:xs) (y:ys) = (x,y) : g (n+1) xs ys
-
 -- Part Four
 
---zip xs ys = g 0 xs ys where
---  g n xs ys = if n == length xs || n == length ys then [] else
---          (xs !! n, ys !! n) : g (n + 1) xs ys
+zip xs ys = g 0 xs ys where
+  g n xs ys = if n == length xs || n == length ys then [] else
+          (xs !! n, ys !! n) : g (n + 1) xs ys
 
 tzip :: Test
 tzip = "zip" ~:
   TestList [ zip "abc" [True,False,True] ~?= [('a',True),('b',False), ('c', True)],
              zip "abc" [True] ~?= [('a', True)],
              zip [] [] ~?= ([] :: [(Int,Int)]) ]
-
-
-stranspose :: [[a]] -> [[a]]
-stranspose [] = []
-stranspose ([]:_) = []
-stranspose list = heads list : stranspose (corr list)
-
-heads [] = []
-heads ([]:row) = heads row
-heads ((x:_):row) = x: heads row 
-
-corr [] = []
-corr ([]:row) = corr row 
-corr ((_:xs):row) = xs : corr row
 
 --------------------------------------------------------------------------------
 -- Problem (List library chops)
@@ -272,16 +242,7 @@ tendsWith = "endsWith" ~: (assertFailure "testcase for endsWith" :: Assertion)
 -- [[1,3],[2,4]]
 -- (WARNING: this one is tricky!)
 transpose :: [[a]] -> [[a]]
-transpose [] = []
-transpose xss = transpose' xss
-  where transpose' [] = nils
-        transpose' (xs:xss) = zipWith (:) xs (transpose' xss)
-
-        nils = repeat []
-        
-        zipWith f [] _ = []
-        zipWith f _ [] = []
-        zipWith f (x:xs) (y:ys) = f x y : zipWith f xs ys
+transpose = undefined
 
 ttranspose :: Test
 ttranspose = "transpose" ~: (assertFailure "testcase for transpose" :: Assertion)
@@ -441,13 +402,7 @@ tconcat' = "concat" ~: (assertFailure "testcase for concat" :: Assertion)
 -- NOTE: use foldr for this one, but it is tricky! (Hint: the value returned by foldr can itself be a function.)
 
 startsWith' :: String -> String -> Bool
-startsWith' s1 s2 =
-  foldr (\c acc -> \s -> case s of
-                           [] -> False
-                           a:as -> a == c && acc as
-            ) (\s -> True) s1 s2
-
-
+startsWith' = undefined
 tstartsWith' = "tstartsWith'" ~: (assertFailure "testcase for startsWith'" :: Assertion)
 
 -- INTERLUDE: para
