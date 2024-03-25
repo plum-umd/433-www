@@ -1,0 +1,391 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[shortlabels]{enumitem}
+\usepackage{fancyvrb}
+
+\usepackage{tikz}
+
+\newcommand{\qitem}[1]{\noindent\textbf{(#1)}}
+
+\bibliographystyle{plainurl}% the mandatory bibstyle
+
+\title{CMSC 488B: Midterm Exam (Spring 2022)}
+\author{}
+\date{}
+\include{preamble}
+
+\begin{document}
+
+\maketitle
+
+\section*{Question 1 (20 points)}
+
+Consider the two standard folds in Haskell, \haske{foldl} and \haske{foldr},
+whose definitions are given below:
+\begin{hask}
+  foldr :: (a -> b -> b) -> b -> [a] -> b
+  foldr f b [] = b
+  foldr f b (x:xs) = f x (foldr f b xs)
+   
+  foldl :: (b -> a -> b) -> b -> [a] -> b
+  foldl f b [] = b
+  foldl f b (x:xs) = foldl f (f b x) xs
+\end{hask}
+
+Now consider the following two very similar but distinct folds over
+lists of integers:
+
+\begin{hask}
+  f1 :: [Int] -> Int
+  f1 = foldr (-) 0
+
+  f2 :: [Int] -> Int
+  f2 = foldl (-) 0
+\end{hask}
+
+Write two Dafny programs, one corresponding to each of \haske{f1} and
+\haske{f2}, but operating on arrays rather than lists. We've given you
+the method signatures to get you started:
+
+
+\begin{minipage}{0.45\textwidth}
+\begin{hask}
+method f1(a:array<int>) returns (out:int) {                   
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}                                                             
+\end{hask}
+\end{minipage}
+\hfill \vline \hfill
+\begin{minipage}{0.45\textwidth}
+\begin{hask}
+method f2(a:array<int>) returns (out:int) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+}                                                             
+\end{hask}
+\end{minipage}
+
+\pagebreak
+\section*{Question 2 (20 points)}
+
+For each of the Haskell expressions below, write their (most general)
+Haskell type or ``ill-typed'' if it contains a type error. The type
+signatures of all functions below are provided in the appendix at the
+end.
+
+\begin{enumerate}[(a)]
+\itemsep2em
+\item \haske{\x -> x} \\
+  {\em Example answer:}\\
+  \haske{a -> a}
+  \vspace*{-1.5em}
+\item \haske{\x y -> (x,y)}
+\item \haske{\x y -> if x == y then show x else show (x,y)}
+\item \haske{\x l -> x : l ++ l ++ [x]}  
+\item \haske{foldr (const 1)}
+\item \haske{(,"42")}
+\item \haske{(,) "42"}
+\item \haske{reverse . reverse}
+\item \haske{\l -> filter (< 42) (l ++ l)}
+\item \haske{let f x = x in (f 'a', f True)}  
+\item \haske{fmap (fmap (+1)) [Nothing]}
+\end{enumerate}
+
+\pagebreak
+\section*{Question 3 (20 points)}
+
+For each of the types below, write a Haskell expression that has that
+type.  Don't write trivial expressions (such as \haske{[]},
+\haske{Nothing}, or \haske{undefined}) unless there is no other
+option. You can use any function from the appendix, do syntax, list
+comprehensions, or any valid Haskell.
+
+\begin{enumerate}[(a)]
+\itemsep2em
+\item \haske{Int -> Int} \\
+  {\em Example answers:}\\
+  \haske{\x -> x + 1}\\
+  \haske{(+1)}
+  \vspace*{-1.5em}
+\item \haske{Bool -> [Bool]}
+\item \haske{a -> Maybe b}
+\item \haske{(Int -> Char -> Bool) -> [Int] -> [Char] -> [Bool]}
+\item \haske{(a -> b -> c) -> Maybe a -> Maybe b -> Maybe c}
+\item \haske{(a -> b) -> (b -> Bool) -> [a] -> [b]}
+\item \haske{Maybe a -> (a -> [b]) -> [(a,b)]}
+\item \haske{Eq a => a -> [a] -> [a]}
+\item \haske{Show a => [a] -> IO String}
+\item \haske{(a,b) -> (a -> b -> c) -> c}
+\item \haske{((a,b) -> c) -> c}  
+\end{enumerate}
+
+\pagebreak
+\section*{Question 4 (20 points)}
+
+Consider the following Dafny program that inefficiently calculates
+the cube of a number:
+
+\begin{verbatim}
+method Cube(m:int) returns (y:int) 
+  requires m > 0
+  ensures y == m*m*m
+{
+  y := 0;
+  var x := m * m;
+  var z := m;
+  while (z > 0) 
+  {
+    z := z - 1;
+    y := y + x;
+  }
+}
+\end{verbatim}
+
+Fill in the annotations in the following program to show that the
+Hoare triple given by the outermost pre- and post- conditions is
+valid. Be completely precise and pedantic in the way you apply Hoare
+rules---write assertions in \emph{exactly} the form given by the
+rules rather than just logically equivalent ones. The provided
+blanks have been constructed so that if you work backwards from
+the end of the program you should only need to use the rule
+of consequence in the places indicated with \verb+->>+. These
+implication steps can (silently) rely on all the usual rules of
+arithmetic.
+
+\begin{verbatim}
+{{ m > 0 }} ->> 
+{{                                                  }}
+  y := 0;
+{{                                                  }}
+  var x := m * m;
+{{                                                  }}
+  var z := m;
+{{                                                  }}
+  while (Z > 0) {
+{{                                                  }} ->>
+{{                                                  }}
+    z := z - 1;
+{{                                                  }}
+    y := y + x;
+{{                                                  }} 
+}
+{{                                                  }} ->>
+{{ y = m * m  * m}}
+\end{verbatim}
+
+
+\pagebreak
+\section*{Question 5 (20 points + 10pt bonus!)}
+
+Implement the following Haskell functions:
+
+\begin{enumerate}[(a)]
+\item Implement a function \haske{weave} that given two lists with
+  elements of the same type, returns a list with elements alternating
+  between the two lists. For example:
+  \begin{hask}
+    weave [1,2,3] [4,5,6] = [1,4,2,5,3,6]
+  \end{hask}
+  You can assume that the lists have the same length.
+  \vspace*{20em}
+  
+\item Implement a function \haske{toMax}, that given a non-empty
+  list of integers, returns a list of the same length, where
+  each element has been replaced by the maximum element of the
+  list. For example:
+  \begin{hask}
+    toMax [1,4,2,5,3] = [5,5,5,5,5]
+  \end{hask}
+  You can use the \haske{foo} function of problem (4e) if it helps.
+ 
+  {\em BONUS: } Implement \haske{toMax} so that it only traverses
+  a list once!
+% 
+\end{enumerate}
+
+\pagebreak
+
+\section*{Typeclass Definitions}
+
+\begin{hask}
+  class Semigroup a where
+    (<>)   :: a -> a -> a
+
+  class Semigroup m => Monoid m where
+    mempty :: m
+
+  class  Show a  where
+    show   :: a   -> String    
+
+  class  Eq a  where
+    (==)   :: a -> a -> Bool
+    (/=)   :: a -> a -> Bool
+
+  class Eq a => Ord a where
+    compare :: a -> a -> Ordering
+    (<), (<=), (>=), (>) :: a -> a -> Bool
+    max, min             :: a -> a -> a
+
+  class Functor f where
+    fmap   :: (a -> b) -> f a -> f b
+
+  class Functor f => Applicative f where
+    pure   :: a -> f a
+    (<*>)  :: f (a -> b) -> f a -> f b
+
+  class Applicative m => Monad m where
+    return :: a -> m a
+    (>>=)  :: m a -> (a -> m b) -> m b
+
+  class Foldable t where
+    foldMap :: Monoid m => (a -> m) -> t a -> m
+
+  class Arbitrary a where
+    arbitrary :: Gen a
+    shrink    :: a -> [a]
+
+  class Num a where
+    (+), (-), (*)       :: a -> a -> a
+    negate              :: a -> a
+    abs                 :: a -> a
+    signum              :: a -> a
+    fromInteger         :: Integer -> a
+\end{hask}
+
+\pagebreak
+
+\section*{Prelude Functions and Datatypes}
+
+\subsection*{Booleans}
+
+\begin{hask}
+data Bool = False | True
+
+(&&) :: Bool -> Bool -> Bool 
+(||) :: Bool -> Bool -> Bool 
+not  :: Bool -> Bool
+\end{hask}
+
+\subsection*{Lists}
+\begin{hask}
+data [] a = [] | a : [a]
+
+(++) :: [a] -> [a] -> [a]
+head, last :: [a] -> a
+tail, init :: [a] -> [a]
+
+null   :: Foldable t => t a -> Bool
+length :: Foldable t => t a -> Int
+map :: (a -> b) -> [a] -> [b] 
+reverse :: [a] -> [a]
+intersperse :: a -> [a] -> [a]
+transpose :: [[a]] -> [[a]]
+foldl  :: Foldable t => (b -> a -> b) -> b -> t a -> b
+foldr  :: Foldable t => (a -> b -> b) -> b -> t a -> b
+concat :: Foldable t => t [a] -> [a]
+and, or  :: Foldable t => t Bool -> Bool
+any, all :: Foldable t => (a -> Bool) -> t a -> Bool
+sum, product :: (Foldable t, Num a) => t a -> a
+maximum, minimum :: (Foldable t, Ord a) => t a -> a
+repeat :: a -> [a]
+replicate :: Int -> a -> [a]
+take, drop :: Int -> [a] -> [a]
+splitAt :: Int -> [a] -> ([a], [a])
+takeWhile, dropWhile :: (a -> Bool) -> [a] -> [a]
+group :: Eq a => [a] -> [[a]]
+inits, tails :: [a] -> [[a]]
+elem, notElem :: (Foldable t, Eq a) => a -> t a -> Bool
+lookup :: Eq a => a -> [(a, b)] -> Maybe b
+find :: Foldable t => (a -> Bool) -> t a -> Maybe a
+filter :: (a -> Bool) -> [a] -> [a]
+zip :: [a] -> [b] -> [(a, b)]
+zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
+nub :: Eq a => [a] -> [a]
+delete :: Eq a => a -> [a] -> [a]
+sort :: Ord a => [a] -> [a]
+sortOn :: Ord b => (a -> b) -> [a] -> [a] 
+\end{hask}
+
+\subsection*{Maybe}
+
+\begin{hask}
+data Maybe a = Nothing | Just a
+
+maybe :: b -> (a -> b) -> Maybe a -> b
+isJust, isNothing :: Maybe a -> Bool
+listToMaybe :: [a] -> Maybe a
+maybeToList :: Maybe a -> [a]
+catMaybes :: [Maybe a] -> [a]
+mapMaybe :: (a -> Maybe b) -> [a] -> [b] 
+\end{hask}
+
+\pagebreak
+
+\subsection*{Functors, Applicatives, and Monads}
+
+\begin{hask}
+(<$\$$>) :: Functor f => (a -> b) -> f a -> f b
+(<$\$$) :: Functor f => a -> f b -> f a
+($\$$>) :: Functor f => f a -> b -> f b
+
+liftA2 :: Applicative f => (a -> b -> c) -> f a -> f b -> f c
+(*>) :: Applicative f => f a -> f b -> f b
+(<*) :: Applicative f => f a -> f b -> f a
+when :: Applicative f => Bool -> f () -> f () 
+
+(>>) :: Monad m => m a -> m b -> m b
+mapM :: Monad m => (a -> m b) -> [a] -> m [b] 
+filterM :: Monad m => (a -> m Bool) -> [a] -> m [a]
+sequence  :: Monad m => [m a] -> m [a]
+join :: Monad m => m (m a) -> m a
+zipWithM :: Monad m => (a -> b -> m c) -> [a] -> [b] -> m [c] 
+foldM :: (Foldable t, Monad m) => (b -> a -> m b) -> b -> t a -> m b 
+replicateM :: Applicative m => Int -> m a -> m [a]
+
+liftM :: Monad m => (a1 -> r) -> m a1 -> m r
+liftM2 :: Monad m => (a1 -> a2 -> r) -> m a1 -> m a2 -> m r
+...
+\end{hask}
+
+\end{document}
