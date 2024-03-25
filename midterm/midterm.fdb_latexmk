@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1711390550 "midterm.tex" "midterm.pdf" "midterm" 1711390550
+["pdflatex"] 1711396624 "midterm.tex" "midterm.pdf" "midterm" 1711396625
   "/etc/texmf/web2c/texmf.cnf" 1623248320 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/lemonidas/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0900.600pk" 1648499285 10448 9d69893873b7f766828f35b513a2f6a7 ""
   "/home/lemonidas/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt0900.600pk" 1631030515 8308 e28154890f08a930afc0f05611b4d8ac ""
@@ -260,11 +260,11 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1623870322 4466278 956ccdc8d57f396eef7b8798b3b11e08 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1632164852 4879474 999bc6cf60f8f1cca3cecebd20062cc0 ""
   "lsthask.sty" 1711384311 9022 ff48f204276a83e1856d687f72af204f ""
-  "midterm.aux" 1711390550 28 fff5cef13b366c2ddf8a9c4afd38a43d "pdflatex"
-  "midterm.tex" 1711390546 9565 7e4350b4212c4ee98170ece9b6c58481 ""
+  "midterm.aux" 1711396625 125 a857a7317ad325073c1f45f62cc05308 "pdflatex"
+  "midterm.tex" 1711396610 9995 9d6261dd249fa2dd9c4cff382a5575a3 ""
   "preamble.tex" 1711384311 15596 cf6489c6122b563ae1cd6d53fc772be1 ""
   (generated)
   "midterm.aux"
-  "preamble.aux"
   "midterm.pdf"
+  "preamble.aux"
   "midterm.log"

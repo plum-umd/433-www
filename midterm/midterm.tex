@@ -9,7 +9,7 @@
 
 \bibliographystyle{plainurl}% the mandatory bibstyle
 
-\title{CMSC 488B: Midterm Exam (Spring 2022)}
+\title{CMSC 433: Midterm Exam (Spring 2024)}
 \author{}
 \date{}
 \include{preamble}
@@ -216,7 +216,7 @@ arithmetic.
 
 
 \pagebreak
-\section*{Question 5 (20 points + 10pt bonus!)}
+\section*{Question 5 (20 points)}
 
 Implement the following Haskell functions:
 
@@ -230,17 +230,15 @@ Implement the following Haskell functions:
   You can assume that the lists have the same length.
   \vspace*{20em}
   
-\item Implement a function \haske{toMax}, that given a non-empty
-  list of integers, returns a list of the same length, where
-  each element has been replaced by the maximum element of the
-  list. For example:
+\item Implement a function \haske{powerset}, that given a list of
+  elements of some type, computes the list of all of its sublists,
+  including the empty list and the original list itself,
+  in any order.
+  For example:
   \begin{hask}
-    toMax [1,4,2,5,3] = [5,5,5,5,5]
+    powerset [1,2,3] = [[1,2,3],[1,2],[1,3],[1],[2,3],[2],[3],[]]
   \end{hask}
-  You can use the \haske{foo} function of problem (4e) if it helps.
  
-  {\em BONUS: } Implement \haske{toMax} so that it only traverses
-  a list once!
 % 
 \end{enumerate}
 
@@ -387,5 +385,36 @@ liftM :: Monad m => (a1 -> r) -> m a1 -> m r
 liftM2 :: Monad m => (a1 -> a2 -> r) -> m a1 -> m a2 -> m r
 ...
 \end{hask}
+
+\pagebreak
+\section{Hoare Rules}
+
+\begin{verbatim}
+
+  { P } s1 { Q } 	
+  { Q } s2 { R } 
+------------------- 	(hoare_seq)  
+{ P } s1; s2 { R } 	
+
+
+----------------------- (hoare_asgn)  
+{Q [x := a]} x := a {Q} 	
+
+
+  {P'} c {Q'} 	
+P ==> P'    Q' ==> Q
+-------------------- (hoare_consequence)  
+   {P} c {Q}
+
+         {P &&  b} s1 {Q} 	
+         {P && !b} s2 {Q}
+-------------------------------- (hoare_if)  
+{P} if b { s1 } else { s2 } {Q}
+
+         {P && b} s {P}
+---------------------------- (hoare_while)
+{P} while b { s } {P && !b}
+\end{verbatim}
+
 
 \end{document}
