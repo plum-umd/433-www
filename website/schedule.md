@@ -14,7 +14,7 @@ title: Schedule
 | 3/12 | [Assignment 4](assignments/4.html) | HW 3 review + [Monad demo](code/InterpMonad.hs) | [Parsers](code/parsers.zip) | 
 | 3/19 | | Spring Break| Spring Break | 
 | 3/26 | | Midterm Review | Midterm (in class) | 
-| 4/02 | | | |
+| 4/02 | [Assignment 5](assignments/5.html) | | |
 | 4/09 | | | |
 | 4/16 | | | |
 | 4/23 | | | |
