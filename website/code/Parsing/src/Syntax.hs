@@ -80,6 +80,8 @@ instance Monoid Block where
    mempty :: Block
    mempty = Block []
 
+-- Changed from PrettyPrinting HW / No more "New"
+
 -- | Statements themselves have the following forms:
 
 data Statement =
@@ -163,6 +165,7 @@ following datatype definitions.
 
 -}
 
+-- Changed from PrettyPrinting HW / Proj now takes a Name
 data Var =
     Name Name            -- x, global variable
   | Proj Name Expression -- a[1], access array table using an integer

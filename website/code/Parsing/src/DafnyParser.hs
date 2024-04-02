@@ -225,13 +225,13 @@ nameP = undefined
 --  check out the Syntax module for the list of all possible
 --  operators. The tests are not exhaustive.
 
--- >>> P.parse (many uopP) "- - #"
--- Right [Neg,Neg,Len]
+-- >>> P.parse (many uopP) "- -"
+-- Right [Neg,Neg]
 uopP :: Parser Uop
 uopP = undefined
 
--- >>> P.parse (many bopP) "+ >= .."
--- Right [Plus,Ge,Concat]
+-- >>> P.parse (many bopP) "+ >="
+-- Right [Plus,Ge]
 bopP :: Parser Bop
 bopP = undefined
 
