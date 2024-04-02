@@ -1,7 +1,7 @@
 {-
 ---
 fulltitle: Monad Transformers
-date: November 16, 2021
+date: April 2, 2024
 ---
 -}
 {-# LANGUAGE FlexibleContexts #-}
@@ -15,7 +15,7 @@ date: November 16, 2021
 
 module Transformers where
 
-import Control.Monad (ap, liftM)
+import Control.Monad (ap, liftM, guard)
 import Data.Kind (Type)
 import State (State)
 import qualified State as S
@@ -79,9 +79,7 @@ continue with a default value (such as 0).
 
 evalDefault :: Expr -> Int
 evalDefault (Val n) = n
-evalDefault (Div x y) =
-  let m = evalDefault y
-   in if m == 0 then 0 else evalDefault x `div` m
+evalDefault (Div x y) = undefined 
 
 {-
 But, no one likes this solution. It leads to buggy code.
@@ -93,7 +91,7 @@ gently: a `Nothing` result means that an error happened somewhere, while a
 
 evalMaybe :: Expr -> Maybe Int
 evalMaybe (Val n) = return n
-evalMaybe (Div x y) = undefined
+evalMaybe (Div x y) = undefined 
 
 {-
 This version should return `Just 42` for the `ok` term and `Nothing` for `err`.
@@ -148,6 +146,8 @@ Now YOU can use the `Either` monad (with do notation) to write a better exceptio
 throwing evaluator,
 -}
 
+
+
 evalEither :: Expr -> Either String Int
 evalEither (Val n) = return n
 evalEither (Div x y) = undefined
@@ -155,6 +155,10 @@ evalEither (Div x y) = undefined
 {-
 where the helper function `errorS` generates the error string.
 -}
+
+guardS :: Bool -> String -> Either String ()
+guardS True  s = return ()
+guardS False s = Left s
 
 errorS :: Show a => a -> a -> String
 errorS y m = "Error dividing " ++ show y ++ " by " ++ show m
@@ -197,11 +201,7 @@ Now we can write a *profiling* evaluator,
 
 evalProf :: Expr -> Prof Int
 evalProf (Val n) = return n
-evalProf (Div x y) = do
-  m <- evalProf x
-  n <- evalProf y
-  tickProf
-  return (m `div` n)
+evalProf (Div x y) = undefined 
 
 {-
 and observe it at work
@@ -279,7 +279,7 @@ like this:
 
 instance MonadError s (Either s) where
   throwError :: s -> Either s a
-  throwError = Left
+  throwError s = Left s
 
 {-
 Now see what happens if you change `Left` to `throwError` in the
@@ -360,9 +360,10 @@ newtype Mega a = Mega {runMega :: Int -> Either String (a, Int)}
 
 instance Monad Mega where
   return :: a -> Mega a
-  return x = undefined
+  return x = undefined 
+    
   (>>=) :: Mega a -> (a -> Mega b) -> Mega b
-  ma >>= fmb = undefined
+  ma >>= fmb = undefined 
 
 instance Applicative Mega where
   pure = return
@@ -373,11 +374,11 @@ instance Functor Mega where
 
 instance MonadError String Mega where
   throwError :: String -> Mega a
-  throwError str = undefined
+  throwError str = undefined 
 
 instance MonadState Int Mega where
-  get = undefined
-  put x = undefined
+  get = undefined 
+  put x = undefined 
 
 {-
 Finally, once we have a Mega monad, we can run it.
@@ -496,12 +497,10 @@ definitions below to that of the `State` monad.
 
 instance Monad m => Monad (StateT s m) where
   return :: a -> StateT s m a
-  return x = MkStateT $ \s -> return (x, s)
+  return x = undefined 
 
   (>>=) :: StateT s m a -> (a -> StateT s m b) -> StateT s m b
-  p >>= f = MkStateT $ \s -> do
-    (r, s') <- runStateT p s
-    runStateT (f r) s'
+  p >>= f = undefined 
 
 instance Monad m => Applicative (StateT s m) where
   pure = return
@@ -516,18 +515,20 @@ equipping it with the operations from `MonadState Int`. You fill
 in these definitions.
 -}
 
+-- newtype StateT s m a = MkStateT {runStateT :: s -> m (a, s)}
+
 instance Monad m => MonadState s (StateT s m) where
   get :: StateT s m s
   get = MkStateT getIt
     where
       getIt :: s -> m (s, s)
-      getIt s = undefined
+      getIt s = return (s,s)
 
   put :: s -> StateT s m ()
   put s = MkStateT putIt
     where
       putIt :: s -> m ((), s)
-      putIt _ = undefined
+      putIt _ = return ((), s)
 
 {-
 Where are we now?
@@ -562,7 +563,8 @@ directly lifted into the transformed monad, and so the transformation
 
 -}
 
-class MonadTrans (t :: (Type -> Type) -> Type -> Type) where -- from Control.Monad.Trans (among other places)
+class MonadTrans (t :: (Type -> Type) -> Type -> Type) where
+  -- from Control.Monad.Trans (among other places)
   lift :: Monad m => m a -> t m a
 
 {-
@@ -612,7 +614,7 @@ instance MonadState s m => MonadState s (ExceptT e m) where
   get = lift get
 
   put :: s -> ExceptT e m ()
-  put = lift . put
+  put s = lift (put s)
 
 {-
 Step 5: Whew! Put It Together and Run
@@ -684,7 +686,7 @@ any other.
 newtype Id a = MkId a deriving (Show)
 
 instance Monad Id where
-  return x = undefined
+  return x = undefined 
   (MkId p) >>= f = undefined
 
 instance Applicative Id where
@@ -697,6 +699,7 @@ instance Functor Id where
 type State2 s = StateT s Id -- isomorphic to State s
 
 type Either2 s = ExceptT s Id -- isomorphic to Either s
+
 
 {-
 Step 7: Using the library in your code

@@ -1,17 +1,17 @@
 {-
 ---
-fulltitle: "In class exercise: TransExercise"
+fulltitle: "In class exercise: TransformerExercise"
 ---
 -}
 {-# LANGUAGE FlexibleContexts #-}
 
-module TransExercise where
+module TransformerExercise where
 
 {-
 This exercise involves using monad transformers to extend a simple imperative
  programming language, called `L`, with support for *exceptions*. This
- language is a minimal subset of the `Lu` programming language from an upcoming
- homework assignment, with the addition of `throw` and `try` statements.
+ language is a minimal subset of the programming language from your 
+ homework assignments, with the addition of `throw` and `try` statements.
 
 * For simplicity, we define the syntax of this extended language in a [separate
 file](LSyntax.hs).
