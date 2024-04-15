@@ -14,9 +14,9 @@ title: Schedule
 | 3/12 | [Assignment 4](assignments/4.html) | HW 3 review + [Monad demo](code/InterpMonad.hs) | [Parsers](code/parsers.zip) | 
 | 3/19 | | Spring Break| Spring Break | 
 | 3/26 | | Midterm Review | Midterm (in class) | 
-| 4/02 | [Assignment 5](assignments/5.html) | [Monad Transformers](code/transformers.zip) | |
-| 4/09 | | | |
-| 4/16 | | | |
+| 4/02 | [Assignment 5](assignments/5.html) | [Monad Transformers](code/transformers.zip) | Parse/Eval demo |
+| 4/09 | | [QuickCheck](code/quickcheck.zip) | [MiniDafny Generators!](code/Arbitrary.hs)|
+| 4/16 | [Assignment 6](assignments/6.html) | | |
 | 4/23 | | | |
 | 4/30 | | | |
 | 5/07 | Final Projects | | | 

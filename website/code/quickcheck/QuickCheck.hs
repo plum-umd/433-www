@@ -1,7 +1,7 @@
 {-
 ---
 fulltitle: "Type-directed Property Testing"
-date: February 10, 2022
+date: April 9, 2024
 ---
 -}
 {-# LANGUAGE ScopedTypeVariables #-}
@@ -42,6 +42,8 @@ several benefits:
 
 import Control.Monad (liftM2, liftM3)
 import qualified Data.List as List
+import Test.HUnit ((~?=))
+import qualified Test.HUnit
 import Test.QuickCheck
   ( Arbitrary (..),
     Gen,
@@ -69,7 +71,7 @@ import Test.QuickCheck
 Properties
 ==========
 
-Last time we created the horrifying truth tables for the monoid
+A long time ago we created the horrifying truth tables for the monoid
 instances of boolean conjunction and disjunction:
 
 -}
@@ -77,16 +79,16 @@ instances of boolean conjunction and disjunction:
 newtype And = And {getAnd :: Bool} deriving (Eq, Show)
 
 instance Semigroup And where
+--  (<>) :: And -> And -> And
   x <> y = And $ getAnd x && getAnd y
 
 instance Monoid And where
+--  mempty :: And
   mempty = And True
 
-{-
-
-monoidAnd :: Test
+monoidAnd :: Test.HUnit.Test
 monoidAnd =
-  TestList
+  Test.HUnit.TestList
     [ And False <> (And False <> And False) ~?= (And False <> And False) <> And False,
       And False <> (And False <> And True) ~?= (And False <> And False) <> And True,
       And False <> (And True <> And False) ~?= (And False <> And True) <> And False,
@@ -101,6 +103,7 @@ monoidAnd =
       mempty <> And False ~?= And False
     ]
 
+{-
 But most those tests are instances of a more general property: associativity.
 
 A QuickCheck property is essentially a function whose output is a
@@ -260,7 +263,7 @@ We can write a similar property for the maximum element too.
 
 prop_qsort_nn_max :: [Int] -> Property
 prop_qsort_nn_max xs =
-  not (null xs) ==> last (qsort xs) == maximum xs  
+  undefined
 
 {-
 ~~~~~{.haskell}
@@ -604,9 +607,7 @@ which allows us to build weighted combinations of individual generators.
 The Generator Monad
 -------------------
 
-The parameterized type 'Gen' is an instance of the monad type class. What this
-means (for today) is that there are a number of monadic operations available
-for it.
+The parameterized type 'Gen' is an instance of the monad type class. 
 
 ~~~~~~~{.haskell}
 -- from the class Monad
@@ -622,14 +623,11 @@ together compositionally.
 -}
 
 genThree :: Gen Int -- a generator that always generates the value '3'
-genThree = return 3
+genThree = undefined
 
 -- A generator for pairs
 genPair :: Gen a -> Gen b -> Gen (a, b)
-genPair g1 g2 = do
-  a <- g1
-  b <- g2
-  return (a,b)
+genPair g1 g2 = undefined
 
 {- More generator combinators:
 
@@ -647,25 +645,15 @@ liftM3 :: (a -> b -> c -> d) -> Gen a -> Gen b -> Gen c -> Gen d
 The `lift` in these names comes from an analogy: we are taking normal functions and "lifting" them to work with generators. For example, `liftM` takes any regular function of type `a -> b` and converts it
 to be a function of type `Gen a -> Gen b`.
 
-Note, `liftM` above has another name---`fmap`.  That's right, every monad is
-also a functor. And the infix operator `<$>` is yet another name for `fmap`,
+Note, `liftM` above has another name---`fmap`.
+And the infix operator `<$>` is yet another name for `fmap`,
 and you'll probably see this one the most frequently.
 
 -}
 
--- A generator for pairs
---genPair :: Gen a -> Gen b -> Gen (a, b)
---genPair g1 g2 = do
---  a <- g1
---  b <- g2
---  return (a,b)
-
-
--- liftM2 :: (a -> b -> c) -> Gen a -> Gen b -> Gen c
-
 -- Implement using liftM variants:
 genPair' :: Gen a -> Gen b -> Gen (a,b)
-genPair' = liftM2 (,)
+genPair' = undefined 
 
 {-
 Generator Practice
@@ -679,11 +667,10 @@ genBool :: Gen Bool
 genBool = undefined
 
 genTriple :: Gen a -> Gen b -> Gen c -> Gen (a, b, c)
-genTriple = liftM3 (,,)
+genTriple = undefined
 
 genMaybe :: Gen a -> Gen (Maybe a)
-genMaybe ga = oneof [ return Nothing
-                    , Just <$> ga ]
+genMaybe ga = undefined                    
 
 {-
 The Arbitrary Typeclass
@@ -747,14 +734,12 @@ Can you spot a problem in the above?
 <FILL IN HERE>
 
 Let's try again,
+-- oneOf :: [Gen a] -> Gen a
 -}
 
 genList2 :: (Arbitrary a) => Gen [a]
-genList2 =
-  oneof
-    [ return [],
-      liftM2 (:) arbitrary genList2
-    ]
+genList2 = undefined
+
 
 {-
 ~~~~~{.haskell}
@@ -832,21 +817,7 @@ above in `genList4`.
 data Tree a = Empty | Branch a (Tree a) (Tree a) deriving (Show)
 
 instance Arbitrary a => Arbitrary (Tree a) where
-  arbitrary = sized gen
-    where
-      gen n = frequency
-        [ (1, return Empty),
-          (n, liftM3 Branch arbitrary (gen (n `div` 2)) (gen (n `div` 2)))
-          -- | Note: This can also be:
-          --   Branch <$> arbitrary <*> gen (n `div` 2) <*> gen (n `div` 2)
-        ]
-
-size :: Tree a -> Int
-size Empty = 1
-size (Branch x l r) = 1 + size l + size r
-
-prop_tree :: Tree Int -> Property
-prop_tree t = collect (size t) True
+  arbitrary = undefined
 
 {-:
 ~~~~~{.haskell}
@@ -861,7 +832,7 @@ lists* by mapping the `sort` function over the generated list.
 -}
 
 genOrdList :: (Arbitrary a, Ord a) => Gen [a]
-genOrdList = fmap List.sort genList3
+genOrdList = List.sort <$> genList3
 
 {-
 ~~~~~{.haskell}

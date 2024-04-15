@@ -10,7 +10,7 @@ title: Assignments + Final Project
 - [Assignment 3: Haskell Basics](assignments/3.html) - Due March 8th
 - [Assignment 4: MiniDafny - Printing](assignments/4.html) - Due March 15th
 - [Assignment 5: MiniDafny - Parsing](assignments/5.html) - Due April 5th
-- [Assignment 6: MiniDafny - Verification Conditions]() - Due TBD
+- [Assignment 6: MiniDafny - Verification Conditions](assignments/6.html) - Due April 19th
 
 The exact details of these assignments, including their number/topic
 are subject to change. This is a rough outline of the plan before the
