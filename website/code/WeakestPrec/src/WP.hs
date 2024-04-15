@@ -101,7 +101,7 @@ wInv =  Op2 (Op2 (Var (Name "y")) Le (Var (Name "x")))
 -- | When propagating the loop invariant backwards inside the loop body,
 --   we substitute "y+1" for "y" and obtain:
 --
---   y + 1 <= x && z == y * x
+--   y + 1 <= x && z == (y + 1) * x
 --
 --   That is:
 
@@ -251,7 +251,7 @@ test_vcStmt :: Test
 test_vcStmt =
   TestList [ "vc - while" ~: vcStmt (Predicate wWhilePost) wSquareWhile ~?= vcsWhile ]
 
--- | To implement this, first, calculate the latter two for a single statement:
+-- | To implement this, first, calculate the latter two for a single (While) statement:
 vcStmt :: Predicate -> Statement -> [Predicate]
 vcStmt (Predicate p) (While (Predicate inv) e b) = undefined
 vcStmt _ _ = []
