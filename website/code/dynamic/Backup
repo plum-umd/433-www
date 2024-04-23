@@ -79,43 +79,17 @@ instead:
 
 -}
 
-zip' xs ys = g 0 xs ys where
-   g n xs ys = if n == length xs || n == length ys then [] else
-           (xs !! n, ys !! n) : g (n + 1) xs ys
+zip' :: [a] -> [b] -> [(a,b)]
+zip' x y = go 0
+  where -- Convert x and y into arrays
+        xs = listArray (0,lx-1) x
+        ys = listArray (0,ly-1) y
 
+        -- Access the ith element of each array
+        go i | i < lx && i < ly = (xs ! i, ys ! i) : go (i+1)
+             | otherwise = []
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
---zip' :: [a] -> [b] -> [(a,b)]
---zip' x y = go 0
---  where -- Convert x and y into arrays
---        xs = listArray (0,lx-1) x
---        ys = listArray (0,ly-1) y
--- 
---        -- Access the ith element of each array
---        go i | i < lx && i < ly = (xs ! i, ys ! i) : go (i+1)
---             | otherwise = []
--- 
---        (lx,ly) = (length x, length y)
+        (lx,ly) = (length x, length y)
 
 {-
 
@@ -183,7 +157,13 @@ A naive recursive solution:
 -}
 
 naive :: String -> String -> Int
-naive _ _ = undefined
+naive [] s2 = length s2
+naive s1 [] = length s1
+naive (h1:t1) (h2:t2)
+  | h1 == h2  = naive' t1 t2
+  | otherwise = minimum [ naive t1 (h2:t2) + 1 -- DELETE
+                        , naive (h1:t1) t2 + 1 -- INSERT
+                        , naive t1 t2 + 1 ]    -- SUBSTITUTE
 
 {-
 
@@ -302,7 +282,7 @@ Wait, what?
 
 Indeed, try it out!
 
-λ> dynamic "aaaaaaaaaa" "bbbbbbbbbb"
+λ> basic "aaaaaaaaaa" "bbbbbbbbbb"
 10
 (0.00 secs, 444,144 bytes)        
 

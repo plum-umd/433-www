@@ -1,6 +1,6 @@
 cabal-version:       >=1.10
 
-name:                cmsc488b-dynamic
+name:                cmsc433-dynamic
 version:             0.1.0.0
 license-file:        LICENSE
 maintainer:          leonidas@umd.edu
