@@ -16,8 +16,7 @@ The exact details of these assignments, including their number/topic
 are subject to change. This is a rough outline of the plan before the
 semester starts.
 
-# Final Project
+# [Final Project](assignments/project.html)
 
 The final project will be to combine assignments 4,5, and 6, and add
-Z3 integration in order to be able to verify you programs from assingment
-2. Details will be made available throughout the semester.
+Z3 integration in order to be able to verify a subset of Dafny programs.

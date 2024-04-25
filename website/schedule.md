@@ -19,4 +19,4 @@ title: Schedule
 | 4/16 | [Assignment 6](assignments/6.html) | [Dynamic Programming!](code/dynamic.zip) | [Z3](code/z3.zip) |
 | 4/23 | | | |
 | 4/30 | | | |
-| 5/07 | Final Projects | | | 
+| 5/07 | [Final Project](assignments/project.html) | | | 
