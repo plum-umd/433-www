@@ -17,6 +17,6 @@ title: Schedule
 | 4/02 | [Assignment 5](assignments/5.html) | [Monad Transformers](code/transformers.zip) | Parse/Eval demo |
 | 4/09 | | [QuickCheck](code/quickcheck.zip) | [MiniDafny Generators!](code/Arbitrary.hs)|
 | 4/16 | [Assignment 6](assignments/6.html) | [Dynamic Programming!](code/dynamic.zip) | [Z3](code/z3.zip) |
-| 4/23 | | | |
-| 4/30 | | | |
+| 4/23 | | [GADTs](code/GADTs.zip) | [Agda!](code/Tutorial.agda) |
+| 4/30 | | [Lenses](code/lenses.zip) | |
 | 5/07 | [Final Project](assignments/project.html) | | | 

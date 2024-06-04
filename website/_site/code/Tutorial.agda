@@ -59,12 +59,13 @@ z + y = y
 {- Programming by case analysis: One of the cool features of Agda
    is support for type-guided interactive programming. You can
    add holes, and then ask the type checker for information (C-c C-e),
-   case split (C-c C-c), navigate goals (C-c C-f, C-c C-b), or try
-   to automatically fill holes (C-c C-a)
+   case split (C-c C-c), navigate goals (C-c C-f, C-c C-b), try
+   to automatically fill holes (C-c C-a), fill them (C-c C-SPC)
+   or refine them (C-c C-r).
    -}
 
 _*_ : Nat → Nat → Nat
-x * y = {!!} 
+x * y = {!!}
 
 {- Polymorphism:
    Note that this defines a function id that takes
@@ -72,20 +73,20 @@ x * y = {!!}
    that type in its own type -- more on that later!
 -}
 
-id : (A : Set) → A → A
-id A x = x
+id : (A : Set) -> A -> A
+id A x = {!!}
 
 ex_id : Nat
-ex_id = id Nat z
+ex_id = {!!}
 
 {- To avoid providing type arguments, we can use curly
    braces to declare them implicit. -}
 
 id' : {A : Set} → A → A
-id' x = x
+id' x = {!!}
 
 ex_id' : Nat
-ex_id' = id' z
+ex_id' = {!!}
 
 {- Polymorphic datatypes -}
 data List (A : Set) : Set where
@@ -99,7 +100,7 @@ data _×_ (A B : Set) : Set where
 infixr 4 _,_
 
 fst : {A B : Set} → A × B -> A
-fst (x , y) = x
+fst p = {!!}
 
 {- Totality checking - Agda checks for:
    * Pattern completeness
@@ -113,6 +114,7 @@ foo x = {!!}
 
    Example: Vectors (length-indexed lists)
 -}
+
 data Vec (A : Set) : Nat → Set where
   {- Vector of length 0 -}
   []  : Vec A z
@@ -121,8 +123,7 @@ data Vec (A : Set) : Nat → Set where
 infixr 5 _::_
 
 _++v_ : {A : Set} {m n : Nat} → Vec A m → Vec A n → Vec A (m + n)
-[] ++v ys = ys
-(x :: xs) ++v ys = x :: (xs ++v ys)
+xs ++v ys = {!!}
 
 {- Curry Howard Correspondence
 
@@ -136,34 +137,91 @@ _++v_ : {A : Set} {m n : Nat} → Vec A m → Vec A n → Vec A (m + n)
 
    Conjunction: P ∧ Q
    ------------------
-   * To Prove: We need a proof of P and a proof of Q.
-     A proof of P ∧ Q is a pair (p,q) of two proofs,
-     where p is a proof of P and q a proof of Q.
-   * Deduce: If we know P ∧ Q, then we can deduce that
-     both P and Q hold. So given a proof r of P ∧ Q
-     we can get a proof of P (let's call it fst r)
-     and a proof of Q (let's call it snd r).
+   * Deduce:
+     - Given a proof of P ∧ Q, we can deduce that both P and Q hold.
+     - So given a proof r of P ∧ Q
+       we can get a proof of P (let's call it _)
+        and a proof of Q       (let's call it _).
+   * To Prove:
+     - We need a proof of P and a proof of Q.
+     - A proof of P ∧ Q is a 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    Therefore P ∧ Q corresponds to pairs P × Q.
 
-   Implication: P ⇒ Q
-   ------------------
-   * To Prove: We can assume that a proof p of P holds
-     and we need to construct a function λ x → q, where
-     q is a proof of Q.
-   * Deduce: If we have a proof f of P ⇒ Q, and a proof
-     p of P, then we can combine the two proofs to
-     create a proof of Q (f p).
-
-   Therefore P ⇒ Q corresponds to function types P → Q.
-
    Disjunction: P ∨ Q
    ------------------
-   * To Prove:
    * Deduce:
+     - Given a proof of P ∧ Q, we can deduce that
+     
+   * To Prove
+     - We need a proof of P _or_ a proof of Q.
 
    Therefore P ∨ Q correspons to ?
-  
+     -}
+
+{- TODO: Data type for disjunction -}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+data Either (A B : Set) : Set where
+  Left : A → Either A B
+  Right : B → Either A B
+
+{-
+
+   Implication: P ⇒ Q
+   ------------------
+   * To Prove:
+     - Given a proof of P, we need to construct a proof of Q.
+
+   * Deduce:
+     - Given a proof of P ⇒ Q, and a proof of P,
+       we can combine the two proofs into a proof of Q.
+     - ...
+
+   Therefore P ⇒ Q corresponds to ? 
+
+-}
+
+{-
    Truth: true
    -----------
    * To Prove: We can always prove true. Therefore we can
@@ -187,6 +245,8 @@ data ⊤ : Set where
 data ⊥ : Set where
   -- no constructors
 
+absurd : (A : Set) -> ⊥ -> A
+absurd A f = {!!}
 
 {- Now we can take _any_ formula in propositional logic, translate it
    to a type in Agda, and then prove the formula by writing down a
@@ -199,8 +259,13 @@ proofEx1 p = {!!}
 
 {- Example: Transitivity.
    (If P implies Q and Q implies R then P implies R)
+-}
 
-TODO: in class. -}
+proofEx2 : {P Q R : Set} -> (P → Q) → (Q → R) → (P → R)
+proofEx2 pq qr = {!!}
+
+impossibleProof : {P Q : Set} → P → Q
+impossibleProof p = {!!}
 
 {- Predicate Logic -}
 
@@ -211,13 +276,63 @@ data IsEven : Nat → Set where
   even-z  : IsEven z
   even-ss : {n : Nat} → IsEven n → IsEven (s (s n))
    
+data IsOdd : Nat → Set where
+  odd-sz  : IsOdd (s z)
+  odd-ss : {n : Nat} → IsOdd n → IsOdd (s (s n))
+
 2-is-even : IsEven two
 2-is-even = {!!}
-   
+
+three : Nat
+three = {!!}
+
+1-is-not-even : IsEven (s z) → ⊥ 
+1-is-not-even pf = {!!}
+
+3-is-not-even : IsEven three → ⊥ 
+3-is-not-even pf = {!!}
+
+five : Nat
+five = s (s (s (s (s z))))
+
+5-is-not-even : IsEven five → ⊥
+5-is-not-even pf = {!!} 
+
 {- Quantification: -}
 double : Nat → Nat
 double z = z
 double (s n) = s (s (double n))
 
 double-is-even : (n : Nat) → IsEven (double n)
-double-is-even n = ?
+double-is-even n = {!!} 
+
+ind-principle-nat : (P : Nat → Set) → P z → ({n : Nat} → P n → P (s n)) → ((n : Nat) → P n)
+ind-principle-nat P pf-z pf-s n = {!!} 
+
+open import Function.Base using (case_of_)
+
+every-nat-is-even-or-odd : (n : Nat) → Either (IsEven n) (IsOdd n)
+every-nat-is-even-or-odd n = {!!} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{-
+every-nat-is-even-or-odd z = Left even-z
+every-nat-is-even-or-odd (s z) = Right odd-sz
+every-nat-is-even-or-odd (s (s n)) =
+  case (every-nat-is-even-or-odd n) of λ where
+    (Left pf-even-n) → Left (even-ss pf-even-n)
+    (Right pf-odd-n) → Right (odd-ss pf-odd-n)
+-}

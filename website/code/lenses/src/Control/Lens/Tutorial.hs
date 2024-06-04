@@ -23,6 +23,7 @@
 {-# LANGUAGE DeriveFoldable    #-}
 {-# LANGUAGE DeriveFunctor     #-}
 {-# LANGUAGE DeriveTraversable #-}
+{-# LANGUAGE TypeApplications #-}
 
 module Control.Lens.Tutorial where
 
@@ -47,7 +48,7 @@ data Point = Point { _x :: Double, _y :: Double }
 --     would have to write something like this in Haskell:
 -- 
 shiftAtomX' :: Atom -> Atom
-shiftAtomX' (Atom e (Point x y)) = Atom e (Point (x + 1) y)
+shiftAtomX' (Atom e (Point x y)) = undefined 
 
 -- |
 --     This unpacking and repacking of data types grows increasingly difficult the
@@ -133,7 +134,7 @@ molecule = Molecule { _atoms = [atom1, atom2] }
     We already saw how to use lenses to update values using `over`, but we can
     also use lenses to retrieve values using `view`:
 
->>> let atom = Atom { _element = "C", _point = Point { _x = 1.0, _y = 2.0 } }
+>>> atom = Atom { _element = "C", _point = Point { _x = 1.0, _y = 2.0 } }
 >>> view (point . x) atom
 1.0
 
@@ -234,17 +235,21 @@ molecule = Molecule { _atoms = [atom1, atom2] }
     @a@).  The result is a `Lens'` built from the getter and setter.  You would
     use `lens` like this:
 
-> point :: Lens' Atom Point
-> point = lens _point (\atom newPoint -> atom { _point = newPoint })
+-}
 
+mypoint :: Lens' Atom Point
+mypoint = lens _point (\atom newPoint -> atom { _point = newPoint })
+
+{- |
     You can even define lenses without incurring a dependency on the @lens@
     library.  Remember that lenses are just higher-order functions over
     `Functor`s, so we could instead write:
+-} 
+-- mypoint' :: Lens' Atom Point
+mypoint' :: Functor f => (Point -> f Point) -> Atom -> f Atom
+mypoint' k atom = fmap (\newPoint -> atom { _point = newPoint }) (k (_point atom))
 
-> -- point :: Lens' Atom Point
-> point :: Functor f => (Point -> f Point) -> Atom -> f Atom
-> point k atom = fmap (\newPoint -> atom { _point = newPoint }) (k (_point atom))
-
+{- |
     This means that you can provide lenses for your library's types without
     depending on the @lens@ library.  All you need is the `fmap` function,
     which is provided by the Haskell Prelude.
@@ -493,14 +498,15 @@ moleculeX = atoms . traverse . point . x
 --     @DeriveTraversable@ extensions.  This means that you can autogenerate a
 --     valid `traverse` for these data types:
 -- 
--- > {-# LANGUAGE DeriveFoldable    #-}
--- > {-# LANGUAGE DeriveFunctor     #-}
--- > {-# LANGUAGE DeriveTraversable #-}
--- >
--- > import Control.Lens
--- > import Data.Foldable
--- >
--- > data Pair a = Pair a a deriving (Functor, Foldable, Traversable)
+-- {-# LANGUAGE DeriveFoldable    #-}
+-- {-# LANGUAGE DeriveFunctor     #-}
+-- {-# LANGUAGE DeriveTraversable #-}
+--  
+-- import Control.Lens
+-- import Data.Foldable
+
+data Pair a = Pair a a deriving (Functor, Foldable, Traversable)
+
 -- 
 --     We could then use `traverse` to navigate from `Pair` to its two children:
 -- 

@@ -11,6 +11,9 @@
   - {name: Data.Maybe.fromJust, within: []}
 
 - ignore: {name: "Use null"}
+- ignore: {name: "Use <&>"}
+- ignore: {name: "Avoid lambda using `infix`"}
+- ignore: {name: "Avoid lambda"}
 - ignore: {name: "Evaluate"}
 - ignore: {name: "Functor law"}
 - ignore: {name: "Monad law, left identity"}
@@ -46,3 +49,4 @@
 - ignore: {name: "Use String"}
 - ignore: {name: "Use sum"}
 - ignore: {name: "Use tuple-section"}
+- ignore: {name: "Unused LANGUAGE pragma"}
