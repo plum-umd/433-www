@@ -4,19 +4,19 @@ title: Schedule
 
 | Week | Due | Tuesday | Thursday |
 | :---: | :---: | :---: | :---: |
-| 1/25 | Installations! | - | PLMW Quiz! | 
-| 1/30 | [Assignment 0](assignments/0.html) | Programming in Dafny ([code](code/Programming-in-Dafny.dfy), [slides](code/Programming-in-Dafny.html)) | Logic in Dafny ([code](code/Logic-in-Dafny.dfy), [slides](code/Logic-in-Dafny.html)) | 
-| 2/06 | [Assignment 1](assignments/1.html) | Program Specifications in Dafny ([code-find](code/LinearSearch.dfy), [code-minMax](code/minMax.dfy), [slides](code/Dafny-Specification.pdf)) | LoopInvariants ([Fibonnaci](code/Fibonacci.dfy), [Binary Search](code/BinSearch.dfy), [FindMin](code/findMinVal.dfy), [Doubling](code/Doubling.txt) [slides](code/LoopInvariants.pdf)) |
-| 2/13 | | [Hoare Logic](code/HoareLogicAssertions.dfy) | (continuation) |
-| 2/20 | [Assignment 2](assignments/2.html) | From OCaml To Haskell [Basics.hs](code/intro-template.zip) | [HigherOrder.hs](code/HigherOrder.hs), [DList.hs](code/DList.hs), [SecretCode.hs](code/SecretCode.hs) |
-| 2/27 | | [Trees + Folds](code/trees.zip) | [Typeclasses](code/typeclasses.zip) |
-| 3/05 | [Assignment 3](assignments/3.html) | [Monads!](code/monads.zip) | [State Monad](code/state.zip), [Pretty Printing](code/Printing.hs) |
-| 3/12 | [Assignment 4](assignments/4.html) | HW 3 review + [Monad demo](code/InterpMonad.hs) | [Parsers](code/parsers.zip) | 
-| 3/19 | | Spring Break| Spring Break | 
-| 3/26 | | Midterm Review | Midterm (in class) | 
-| 4/02 | [Assignment 5](assignments/5.html) | [Monad Transformers](code/transformers.zip) | Parse/Eval demo |
-| 4/09 | | [QuickCheck](code/quickcheck.zip) | [MiniDafny Generators!](code/Arbitrary.hs)|
-| 4/16 | [Assignment 6](assignments/6.html) | [Dynamic Programming!](code/dynamic.zip) | [Z3](code/z3.zip) |
-| 4/23 | | | |
-| 4/30 | | | |
-| 5/07 | [Final Project](assignments/project.html) | | | 
+| 1/27 | [Assignment 0 - Installations](assignments/0.html) | Programming in Dafny         | Specifications in Dafny   | 
+| 2/03 |                                                    | Loop Invariants              | Hoare Logic               |
+| 2/10 | Assignment 1 - Dafny Verification                  | Hoare Logic (cont.)          | From OCaml to Haskell     |
+| 2/17 |                                                    | Higher Order                 | Trees and Folds           |
+| 2/24 | Assignment 2 - Haskell Basics                      | Typeclasses, Pretty Printing | QuickCheck                | 
+| 3/03 |                                                    | Parsers                      | QuickCheck RoundTrip Demo |
+| 3/10 | Assignment 3 - MiniDafny Printing                  | Midterm Review               | Midterm 1                 |
+| 3/17 |                                                    | Spring Break                 | Spring Break              |
+| 3/24 | Assignment 4 - MiniDafny Parsing                   | Monads                       | State Monad               |
+| 3/31 |                                                    | Interp Demo                  | Monad Transformers        | 
+| 4/07 | Assignment 5 - MiniDafny Interpreter               | Parse/Eval Demo              | Recursion Schemes         |
+| 4/14 |                                                    | Dynamic Programming          | GADTs                     |
+| 4/21 | Assignment 6 - MiniDafny Verification Conditions   | Agda Basics                  | Z3                        |
+| 4/28 |                                                    | Midterm 2                    | Lenses                    |
+| 5/05 | [Final Project](assignments/project.html)          | Snake!                       | TBD                       |
+| 5/12 | Final Project Late Deadline                        |                              |                           |

@@ -4,13 +4,13 @@ title: Assignments + Final Project
 
 # Assignments
 
-- [Assignment 0: Software Installation](assignments/0.html) - Due Friday, February 2nd
-- [Assignment 1: Dafny Basics](assignments/1.html) - Due Friday, February 9th
-- [Assignment 2: Dafny Verification](assignments/2.html) - Due Friday, February 23rd
-- [Assignment 3: Haskell Basics](assignments/3.html) - Due March 8th
-- [Assignment 4: MiniDafny - Printing](assignments/4.html) - Due March 15th
-- [Assignment 5: MiniDafny - Parsing](assignments/5.html) - Due April 5th
-- [Assignment 6: MiniDafny - Verification Conditions](assignments/6.html) - Due April 19th
+- [Assignment 0: Software Installation](assignments/0.html) - Due Friday, January 31st
+- [Assignment 1: Dafny Verification]() - Due Friday, February 8th
+- [Assignment 2: Haskell Basics]() - Due Friday, February 21st
+- [Assignment 3: MiniDafny - Printing]() - Due Friday, March 7th
+- [Assignment 4: MiniDafny - Parsing]() - Due Friday, March 14th
+- [Assignment 5: MiniDafny - Interpreter]() - Due Friday, April 4th
+- [Assignment 6: MiniDafny - Verification Conditions]() - Due Friday, April 19th
 
 The exact details of these assignments, including their number/topic
 are subject to change. This is a rough outline of the plan before the

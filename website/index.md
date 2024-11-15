@@ -6,7 +6,7 @@ title: Home
 
 CMSC 433: Programming Language Technologies and Paradigms
 
-Spring 2024
+Spring 2025
 
 **Lectures:**  
 Tuesday & Thursday, 3.30pm Eastern - 4.45pm Eastern  
@@ -29,14 +29,14 @@ but not prior knowledge of Haskell or Dafny.
 
 **Staff:**
 
-| Name | email | Hours (AVW 4140) | Hours (Discord) |
+| Name | email | Hours (TBD) | Hours (Discord) |
 | :---------: | :----------: | :----: | :-----: |
-| [Leonidas Lampropoulos](https://lemonidas.github.io/) | leonidas@umd.edu | M 1pm-2pm (IRB 5248) | W 2p-3pm |
-| Le Chang | lchang21@umd.edu | F 1pm-2pm | Tu 11am-12pm |
-| Sam Lam | slam1@umd.edu | F 3pm-4pm | M 2pm-3pm |
-| Mingwei Zhu | mzhu1@terpmail.umd.edu | F 2pm-3pm | Th 1pm-2pm |
-| Yusuf Bham | ybham@terpmail.umd.edu | F 11am-12pm | W 12pm-1pm |
-| Jeffrey Fisher | jgfisher@terpmail.umd.edu | F 12pm-1pm | Th 2pm-3pm |
+| [Leonidas Lampropoulos](https://lemonidas.github.io/) | leonidas@umd.edu | TBD (IRB 5248) | TBD |
+|  | | F 11am-12pm | TBD |
+|  | | F 12pm-1pm  | TBD |
+|  | | F 1pm-2pm   | TBD |
+|  | | F 2pm-3pm   | TBD | 
+|  | | F 3pm-4pm   | TBD | 
 
 **Disclaimer:** All information on this web page is tentative and
 subject to change. Any substantive change will be accompanied with an

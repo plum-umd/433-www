@@ -78,16 +78,17 @@ percentages:
 
 | Component | Percentage |
 | :--------- | :----------: |
-| Assignments | 50% |
-| Quizzes & Surveys | 10% |
-| Midterm | 25% |
+| Assignments | 40% |
+| Quizzes & Surveys | 50% |
+| Midterm 1 | 20% |
+| Midterm 2 | 20% |
 | Final Project | 15% |
 
 # Assignments
 
 There will be several programming assignments, often with full week
-given for completion and submission (e.g. if it assigned on a Tuesday it will
-be due the following Tuesday at 11:59pm EST unless otherwise noted).
+given for completion and submission, usually due on Fridays at 11:59pm
+EST unless otherwise noted).
 
 Up to two assignments throughout the semester will be accepted 2 days
 late no questions asked. Given the nature of the semester, additional
@@ -97,21 +98,22 @@ Assignments will be submitted through Gradescope.
 
 # Quizzes & surveys
 
-There will be **many** quizzes and surveys. These will be administered
+There will be **some** and surveys. These will be administered
 through ELMS.  Completed surveys receive full credit.  Instructors reserve the
 right to reject survey responses that are not considered thoughtful.
 
 # Midterms 
 
-There will be one Midterm.  
+There will be two Midterms.
 
 # Project
 
 There will be a course project that will be assessed during the final
 exam period for the course. It will constitute of putting together all
-of the (independent) semester assignments to get an end-to-end
-implementation of mini Dafny. The full project description will be
-distributed approximately a month before the due date.
+of the (independent) semester assignments, and extending them to get
+an end-to-end implementation of mini Dafny. The full project
+description will be distributed approximately a month before the due
+date.
 
 # Gradescope
 
@@ -169,8 +171,8 @@ Scheduled Grading Events. For this class, such events are the final
 project assessment and midterm, which will be due on the following
 dates:
 
-- Midterm: TBD
-- Final Project: TBD
+- Midterms
+- Final Project
 
 For medical absences, you must furnish documentation from the health
 care professional who treated you. This documentation must verify
@@ -327,6 +329,13 @@ You may not share, discuss, or compare assignment solutions even after
 they have been graded since later assignments may build upon earlier
 solutions.
 
+The use of AI tools (ChatGPT, Copilot, DALL-E, etc.) is prohibited for
+any part of the assignment process, including brainstorming, writing,
+and editing. While there will be a place for these tools in your
+future work, this policy aims to foster your ability to develop
+original ideas and a unique voice, both core skills of this class. If
+you have questions or suggestions for potential exceptions, please
+email me at leonidas@umd.edu and I would be happy to talk more.
 
 # Course Evaluations
 
